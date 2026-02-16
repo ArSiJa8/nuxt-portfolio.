@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <canvas></canvas>
+  <AboutMe />
 </template>

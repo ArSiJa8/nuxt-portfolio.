@@ -34,6 +34,7 @@
     "nuxt": "^4.3.1",
     "nuxt-charts": "^2.1.2",
     "nuxt-gtag": "^4.1.0",
+    "posthog-js": "^1.347.2",
     "reka-ui": "^2.8.0",
     "tailwindcss": "^4.1.18",
     "three": "^0.182.0",

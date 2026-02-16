@@ -59,3 +59,14 @@ export default defineNuxtConfig({
     id: 'G-KMQQ7THXSG'
   }
 })
+
+ // 6. Other Analytics
+ export default defineNuxtConfig({
+   runtimeConfig: {
+     public: {
+       posthogPublicKey: 'phc_sTOIMacijF65vJNzp5keZLAhcMoQfWVhsntSKUiIkVF',
+       posthogHost: 'https://eu.i.posthog.com',
+       posthogDefaults: '2026-01-30'
+     }
+   }
+ })

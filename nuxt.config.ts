@@ -6,9 +6,7 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
-      htmlAttrs: {
-        lang: 'en'
-      },
+      htmlAttrs: { lang: 'en' },
       title: 'ArSiJa | Portfolio',
       meta: [
         { charset: 'utf-8' },
@@ -37,36 +35,24 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode'
   ],
 
-  // 2. Validator-Regeln
-  htmlValidator: {
-    options: {
-      rules: {
-        'prefer-native-element': 'warn',
-      }
-    }
-  },
-
-  // 3. CSS mit Alias (besser als ../)
+  // 2. CSS - Beibehalten deiner Pfad-Logik
   css: ['../assets/css/main.css'],
 
-  // 4. Tailwind Viewer aktivieren
-  tailwindcss: {
-    viewer: true
+  // 3. Modul-Konfigurationen
+  htmlValidator: {
+    options: {
+      rules: { 'prefer-native-element': 'warn' }
+    }
   },
+  tailwindcss: { viewer: true },
+  gtag: { id: 'G-KMQQ7THXSG' },
 
-  // 5. Google Analytics Config
-  gtag: {
-    id: 'G-KMQQ7THXSG'
+  // 4. Runtime Config (zusammengeführt aus dem zweiten Block)
+  runtimeConfig: {
+    public: {
+      posthogPublicKey: 'phc_sTOIMacijF65vJNzp5keZLAhcMoQfWVhsntSKUiIkVF',
+      posthogHost: 'https://eu.i.posthog.com',
+      posthogDefaults: '2026-01-30'
+    }
   }
 })
-
- // 6. Other Analytics
- export default defineNuxtConfig({
-   runtimeConfig: {
-     public: {
-       posthogPublicKey: 'phc_sTOIMacijF65vJNzp5keZLAhcMoQfWVhsntSKUiIkVF',
-       posthogHost: 'https://eu.i.posthog.com',
-       posthogDefaults: '2026-01-30'
-     }
-   }
- })

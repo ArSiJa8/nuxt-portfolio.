@@ -4,6 +4,7 @@ export default defineNuxtConfig({
 
   // 1. Global Head-Metadata
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       htmlAttrs: {
         lang: 'en'

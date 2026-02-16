@@ -616,3 +616,26 @@ footer {
     min-height: 100vh;
     width: 100%;
 }
+
+/* =========================================================
+   9. NUXT PAGE TRANSITIONS
+   ========================================================= */
+
+.page-enter-active,
+.page-leave-active {
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.4s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-enter-from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(10px);
+}
+
+.page-leave-to {
+    opacity: 0;
+    transform: translateY(-10px);
+    filter: blur(10px);
+}

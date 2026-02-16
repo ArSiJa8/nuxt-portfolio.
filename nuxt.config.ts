@@ -24,7 +24,8 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     'reka-ui',
     'nuxt-charts',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    '@nuxtjs/seo'
   ],
 
   // 2. FIX: Validator-Regeln anpassen

@@ -37,7 +37,7 @@ export default defineNuxtConfig({
   },
 
   // 3. FIX: CSS-Pfad mit Alias
-  css: ['~/assets/css/main.css'],
+  css: ['../assets/css/main.css'],
 
   gtag: {
     id: 'G-KMQQ7THXSG'

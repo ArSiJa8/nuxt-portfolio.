@@ -2,13 +2,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
-  // 1. FIX: Globale Head-Metadaten (Behebt "lang" und "title" Fehler)
+  // 1. FIX: Global Head-Metadata
   app: {
     head: {
       htmlAttrs: {
-        lang: 'de' // Setzt das erforderliche lang-Attribut
+        lang: 'en' //
       },
-      title: 'Mein Nuxt Projekt', // Setzt den erforderlichen <title>
+      title: 'ArSiJa | Portfolio', //
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }

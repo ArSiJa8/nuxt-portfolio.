@@ -10,19 +10,19 @@
         </div>
 
         <div class="markdown-content">
-          <span class="badge">Wer ich bin</span>
-          <h1>Über Mich</h1>
+          <span class="badge">Who i am</span>
+          <h1>About Me/h1>
 
           <p>
-            Ich bin ein leidenschaftlicher Entwickler mit einem Auge für Ästhetik.
-            Mein Ziel ist es, Code und Design so zu verschmelzen, dass moderne,
-            benutzerfreundliche Interfaces entstehen, die sich einfach "richtig" anfühlen.
+            I'm a passionate developer with an eye for aesthetics.
+            My goal is to seamlessly blend code and design to create modern,
+            user-friendly interfaces that simply feel "right".
           </p>
 
           <p>
-            Abseits vom Bildschirm interessiere ich mich für neue Technologien und
-            die kontinuierliche Optimierung von Workflows. Ich glaube daran, dass
-            gutes Design unsichtbar ist – es funktioniert einfach.
+            Away from the screen, I'm interested in new technologies and
+            the continuous optimization of workflows. I believe that
+            good design is invisible – it simply works.
           </p>
 
           <div class="skills-box">

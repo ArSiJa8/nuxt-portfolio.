@@ -7,14 +7,30 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:unit": "vitest --project unit",
+    "test:nuxt": "vitest --project nuxt",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@artmizu/nuxt-prometheus": "^3.0.0",
+    "@formkit/auto-animate": "^0.9.0",
     "@nuxt/a11y": "^1.0.0-alpha.1",
+    "@nuxt/content": "^3.11.2",
+    "@nuxt/eslint": "^1.15.1",
+    "@nuxt/fonts": "^0.14.0",
     "@nuxt/icon": "^2.2.1",
+    "@nuxt/scripts": "^0.13.2",
     "@nuxt/ui": "^4.4.0",
+    "@nuxtjs/color-mode": "^4.0.0",
     "@nuxtjs/html-validator": "^2.1.0",
+    "@nuxtjs/seo": "^3.4.0",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@vueuse/nuxt": "^14.2.1",
+    "better-sqlite3": "^12.6.2",
     "nuxt": "^4.3.1",
     "nuxt-charts": "^2.1.2",
     "nuxt-gtag": "^4.1.0",
@@ -23,5 +39,14 @@
     "three": "^0.182.0",
     "vue": "^3.5.28",
     "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@nuxt/test-utils": "^4.0.0",
+    "@playwright/test": "^1.58.2",
+    "@types/three": "^0.182.0",
+    "@vue/test-utils": "^2.4.6",
+    "happy-dom": "^20.6.1",
+    "playwright-core": "^1.58.2",
+    "vitest": "^4.0.18"
   }
 }

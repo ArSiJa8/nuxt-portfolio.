@@ -29,13 +29,13 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/test-utils',
     '@nuxt/fonts',
-    '@nuxt/scripts',
+    '@nuxt/scripts', // Modul ist bereits vorhanden
     '@formkit/auto-animate',
     '@nuxt/content',
     '@nuxtjs/color-mode'
   ],
 
-  // 2. CSS - Beibehalten deiner Pfad-Logik
+  // 2. CSS
   css: ['../assets/css/main.css'],
 
   // 3. Modul-Konfigurationen
@@ -44,10 +44,21 @@ export default defineNuxtConfig({
       rules: { 'prefer-native-element': 'warn' }
     }
   },
+
   tailwindcss: { viewer: true },
+
   gtag: { id: 'G-KMQQ7THXSG' },
 
-  // 4. Runtime Config (zusammengeführt aus dem zweiten Block)
+  // Konfiguration für Microsoft Clarity via Nuxt Scripts
+  scripts: {
+    registry: {
+      clarity: {
+        id: 'viobsvr01t'
+      }
+    }
+  },
+
+  // 4. Runtime Config
   runtimeConfig: {
     public: {
       posthogPublicKey: 'phc_sTOIMacijF65vJNzp5keZLAhcMoQfWVhsntSKUiIkVF',

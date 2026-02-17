@@ -11,7 +11,7 @@
 
         <div class="markdown-content">
           <span class="badge">Who i am</span>
-          <h1>About Me/h1>
+          <h1>About Me</h1>
 
           <p>
             I'm a passionate developer with an eye for aesthetics.

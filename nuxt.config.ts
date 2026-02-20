@@ -36,7 +36,7 @@ export default defineNuxtConfig({
   ],
 
   // 2. CSS
-  css: ['../assets/css/main.css'],
+  css: ['~/../assets/css/main.css'],
 
   // 3. Modul-Konfigurationen
   htmlValidator: {

@@ -6,35 +6,21 @@
         &copy; {{ currentYear }} <span class="text-white font-bold tracking-normal">ArSiJa</span>. All rights reserved.
       </div>
 
-    <div class="footer-socials">
-      <a
-          href="https://github.com/ArSiJa8"
-          target="_blank"
-          rel="noopener"
-          aria-label="GitHub"
-          class="github-link"
-      >
-        <Icon name="uil:github" />
-      </a>
+      <nav class="flex items-center justify-center" aria-label="Social Media">
+        <a v-for="link in socialLinks"
+           :key="link.name"
+           :href="link.url"
+           target="_blank"
+           rel="noopener"
+           :aria-label="link.name"
+           :class="['social-link-wrapper', link.class]">
+          <Icon :name="link.icon" class="social-icon" />
+        </a>
+      </nav>
 
-      <a
-          href="https://youtube.com/@aArSiJa"
-          target="_blank"
-          rel="noopener"
-          aria-label="Youtube"
-          class="youtube-link"
-      >
-        <Icon name="uil:youtube" />
-      </a>
-
-      <a
-          href="mailto:silvan@arsija.net"
-          aria-label="Email"
-          class="email-link"
-      >
-        <Icon name="uil:envelope" />
-      </a>
-    </div>
+      <div v-if="lastUpdateDate" class="update-info">
+        Last update: {{ lastUpdateDate }}
+      </div>
 
     <div class="footer-last-update">
       Last update: {{ lastUpdateDate }}

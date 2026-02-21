@@ -1,8 +1,10 @@
 <template>
-  <footer>
-    <div class="footer-copyright">
-      &copy; {{ currentYear }} ArSiJa. All rights reserved.
-    </div>
+  <footer class="mt-16 px-8 py-24 border-t border-white/10 bg-black">
+    <div class="max-w-6xl mx-auto flex flex-col items-center gap-12">
+
+      <div class="text-sm tracking-widest text-white/60">
+        &copy; {{ currentYear }} <span class="text-white font-bold tracking-normal">ArSiJa</span>. All rights reserved.
+      </div>
 
     <div class="footer-socials">
       <a

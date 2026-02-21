@@ -67,12 +67,10 @@ onMounted(() => {
   text-decoration: none;
 }
 
-/* Individuelle Hover-Effekte */
-
-/* GitHub: Blaues Leuchten */
-.github-link:hover {
-  color: #78a0ff !important;
-  filter: drop-shadow(0 0 10px rgba(120, 160, 255, 0.8));
+/* Das eigentliche Icon */
+.social-icon {
+  font-size: 2rem; /* Etwas größer (32px) */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* YouTube: Rotes Leuchten */

@@ -88,5 +88,7 @@ onMounted(() => {
   font-size: 0.7rem;
   text-transform: uppercase;
   font-style: italic;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.25);
 }
 </style>

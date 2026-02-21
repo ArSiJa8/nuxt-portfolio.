@@ -84,11 +84,9 @@ onMounted(() => {
 .discord:hover { color: #5865F2; filter: drop-shadow(0 0 15px rgba(88, 101, 242, 0.6)); }
 .email:hover   { color: #facc15; filter: drop-shadow(0 0 15px rgba(250, 204, 21, 0.6)); }
 
-/* Styling für die Update-Anzeige */
-.footer-last-update {
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  opacity: 0.5;
+.update-info {
+  font-size: 0.7rem;
+  text-transform: uppercase;
   font-style: italic;
 }
 </style>

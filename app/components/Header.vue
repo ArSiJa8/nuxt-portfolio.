@@ -6,8 +6,8 @@ const isMenuActive = ref(false);
 
 // --- Menü-Struktur ---
 const menuItems = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/About' },
+  { name: 'Home', path: '/#top' },
+  { name: 'About', path: '#about' },
   { name: 'Contact', path: '/Contact' },
   { name: 'Projects', path: '/Projects' },
 ];
@@ -15,13 +15,38 @@ const menuItems = [
 // --- Funktionen ---
 const toggleMenu = () => {
   isMenuActive.value = !isMenuActive.value;
-  // Body scroll sperren, wenn Menü offen ist (wie in deinem JS)
+  // Body scroll sperren, wenn Menü offen ist
   document.body.style.overflow = isMenuActive.value ? 'hidden' : 'auto';
 };
 
-const closeMenu = () => {
+const handleNavClick = (item) => {
   isMenuActive.value = false;
   document.body.style.overflow = 'auto';
+
+  // Sicherheitscheck
+  if (!item || !item.path) return;
+
+  // SPEZIALFALL HOME: Nutze den Ghost-Anchor oder Position 0
+  if (item.path === '#top') {
+    const el = document.getElementById('scroll-anchor-top');
+
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Fallback, falls der Anchor nicht gefunden wird
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // URL sauber halten (entfernt das #top)
+    if (window.history.pushState) {
+      window.history.pushState(null, null, '/');
+    }
+  }
+  // Anker für #about werden nativ durch das 'href' im Template behandelt
 };
 
 // --- Scroll Reveal Logik ---
@@ -36,12 +61,6 @@ const initScrollReveal = () => {
   const elements = document.querySelectorAll(revealSelectors);
   if (elements.length === 0) return;
 
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px 0px -8% 0px',
-    threshold: 0.12
-  };
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -49,15 +68,15 @@ const initScrollReveal = () => {
         observer.unobserve(entry.target);
       }
     });
-  }, observerOptions);
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -8% 0px'
+  });
 
   elements.forEach((el, idx) => {
     el.classList.add('reveal');
-    // Staggered Delay (0, 60, 120ms...)
-    if (!el.style.transitionDelay && !el.dataset.delay) {
-      const delayMs = (idx % 10) * 60;
-      el.style.transitionDelay = `${delayMs}ms`;
-    }
+    const delayMs = (idx % 10) * 60;
+    el.style.transitionDelay = `${delayMs}ms`;
     observer.observe(el);
   });
 };
@@ -70,27 +89,48 @@ onMounted(() => {
 <template>
   <header class="main-header">
     <nav class="nav-container">
-      <router-link to="/" class="nav-branding">ArSiJa</router-link>
+      <a href="#" class="nav-branding" @click.prevent="handleNavClick({ path: '#top' })">
+        ArSiJa
+      </a>
 
       <ul class="nav-menu" :class="{ 'active': isMenuActive }">
-        <li v-for="item in menuItems" :key="item.path" class="nav-item">
-          <router-link 
-            :to="item.path" 
-            class="nav-link" 
-            @click="closeMenu"
+        <li v-for="item in menuItems" :key="item.name" class="nav-item">
+
+          <a
+              v-if="item.path === '#top'"
+              href="#"
+              class="nav-link"
+              @click.prevent="handleNavClick(item)"
           >
             {{ item.name }}
-          </router-link>
+          </a>
+
+          <a
+              v-else-if="item.path.startsWith('#')"
+              :href="item.path"
+              class="nav-link"
+              @click="handleNavClick(item)"
+          >
+            {{ item.name }}
+          </a>
+
+          <NuxtLink
+              v-else
+              :to="item.path"
+              class="nav-link"
+              exact-active-class="is-exact-active"
+              @click="handleNavClick(item)"
+          >
+            {{ item.name }}
+          </NuxtLink>
+
         </li>
       </ul>
 
-      <div 
-        class="hamburger" 
-        :class="{ 'active': isMenuActive }" 
-        @click="toggleMenu"
-        role="button"
-        aria-label="Menü öffnen"
-        :aria-expanded="isMenuActive"
+      <div
+          class="hamburger"
+          :class="{ 'active': isMenuActive }"
+          @click="toggleMenu"
       >
         <span class="bar"></span>
         <span class="bar"></span>
@@ -100,3 +140,20 @@ onMounted(() => {
   </header>
 </template>
 
+<style scoped>
+/* Aktiver Zustand für NuxtLinks (Contact/Projects) */
+.nav-link.is-exact-active {
+  color: #fff;
+}
+.nav-link.is-exact-active::after {
+  width: 100%;
+}
+
+/* Hover-Zustand für alle Links */
+.nav-link:hover {
+  color: #fff;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+</style>

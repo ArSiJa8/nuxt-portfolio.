@@ -553,10 +553,20 @@ footer {
 .nav-link:hover::after { width: 100%; }
 
 /* Router Link Active State (Optional) */
-.router-link-active.nav-link {
+/* Nur der exakt aktive Link bekommt den vollen Unterstrich */
+/* Der Standard-Link */
+.nav-link {
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    text-decoration: none;
+}
+
+/* NUR wenn der Link EXAKT matcht, wird er weiß und bekommt den Strich */
+.nav-link.is-exact-active {
     color: #fff;
 }
-.router-link-active.nav-link::after {
+
+.nav-link.is-exact-active::after {
     width: 100%;
 }
 
@@ -568,6 +578,11 @@ footer {
     padding: 10px;
     border-radius: 12px;
     transition: background 0.3s ease;
+}
+
+/* In deinem CSS */
+#about {
+    scroll-margin-top: 100px; /* Verschiebt den Scroll-Stopppunkt nach unten */
 }
 
 .hamburger:hover { background: rgba(255, 255, 255, 0.1); }
@@ -704,4 +719,39 @@ footer {
 .card > *, .container-white > * {
     position: relative;
     z-index: 1;
+}
+/* =========================================================
+   GLOBAL SCROLL & ANCHOR FIXES
+   ========================================================= */
+
+html {
+    /* Das sorgt für die Animation beim Klicken auf #links */
+    scroll-behavior: smooth !important;
+}
+
+/* Verhindert, dass der fixierte Header deine Überschriften verdeckt */
+
+/* Ausnahme für den allerersten Anker ganz oben */
+#top {
+    position: absolute;
+    top: 0;
+    height: 1px;
+    width: 1px;
+}
+
+/* Falls du Tailwind nutzt, bleibt dein @theme oder @import "tailwindcss" hier stehen */
+@import "tailwindcss";
+
+/* Der Zustand während der Animation */
+.page-enter-active,
+.page-leave-active {
+    transition: all 0.4s;
+}
+
+/* Der Startzustand beim Reinkommen / Endzustand beim Gehen */
+.page-enter-from,
+.page-leave-to {
+    opacity: 0;
+    filter: blur(1rem); /* Optional: Ein leichter Blur-Effekt */
+    transform: translateY(10px); /* Optional: Sanftes Hochrutschen */
 }

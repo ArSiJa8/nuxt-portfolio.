@@ -5,6 +5,7 @@ const route = useRoute()
 </script>
 
 <template>
+  <div id="scroll-anchor-top" style="position: absolute; top: 0; left: 0; height: 1px; width: 1px; z-index: 9999; pointer-events: none;"></div>
   <div>
     <Header />
 

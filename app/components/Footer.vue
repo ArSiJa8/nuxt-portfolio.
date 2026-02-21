@@ -78,11 +78,11 @@ onMounted(() => {
   transform: scale(1.3) translateY(-5px);
 }
 
-/* Email: Gelbes Leuchten */
-.email-link:hover {
-  color: #facc15 !important;
-  filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.8));
-}
+/* Farben & Glow-Effekte */
+.github:hover  { color: #78a0ff; filter: drop-shadow(0 0 15px rgba(120, 160, 255, 0.6)); }
+.youtube:hover { color: #ff0000; filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.6)); }
+.discord:hover { color: #5865F2; filter: drop-shadow(0 0 15px rgba(88, 101, 242, 0.6)); }
+.email:hover   { color: #facc15; filter: drop-shadow(0 0 15px rgba(250, 204, 21, 0.6)); }
 
 /* Styling für die Update-Anzeige */
 .footer-last-update {

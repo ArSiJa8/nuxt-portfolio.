@@ -314,16 +314,16 @@ footer {
     transition: var(--transition-smooth);
 }
 
-.footer-socials a:hover { 
-    color: var(--accent); 
-    transform: translateY(-3px) scale(1.1); 
+.footer-socials a:hover {
+    color: var(--accent);
+    transform: translateY(-3px) scale(1.1);
     filter: drop-shadow(0 0 10px rgba(120, 160, 255, 0.8));
 }
 
 @media (max-width: 600px) {
-    footer { 
-        flex-direction: column; 
-        text-align: center; 
+    footer {
+        flex-direction: column;
+        text-align: center;
         padding: 40px 20px;
     }
     .footer-copyright, .footer-socials { order: unset; }
@@ -365,8 +365,8 @@ footer {
 
 .center-screen {
     position: relative;
-    width: 100%;     
-    height: 100vh;    
+    width: 100%;
+    height: 100vh;
     background-image: url('../imgs/wallpaper.jpg');
     background-size: cover;
     background-position: center;
@@ -374,7 +374,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;  
+    overflow: hidden;
 }
 
 .center-screen::after {
@@ -388,12 +388,12 @@ footer {
 .center-screen .card {
     position: relative;
     z-index: 2;
-    background: rgba(255, 255, 255, 0.1); 
+    background: rgba(255, 255, 255, 0.1);
     padding: 40px;
     border-radius: 20px;
     text-align: center;
     color: #fff;
-    backdrop-filter: blur(10px); 
+    backdrop-filter: blur(10px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
@@ -413,8 +413,8 @@ footer {
     margin-top: 30px;
 }
 
-.markdown-content h1, 
-.markdown-content h2, 
+.markdown-content h1,
+.markdown-content h2,
 .markdown-content h3 {
     text-align: left;
     margin-top: 1.5em;
@@ -426,7 +426,7 @@ footer {
     margin-bottom: 1em;
 }
 
-.markdown-content ul, 
+.markdown-content ul,
 .markdown-content ol {
     margin-left: 20px;
     margin-bottom: 1em;
@@ -455,25 +455,48 @@ footer {
     width: calc(100% - 40px);
     max-width: 1200px;
     z-index: 1000;
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    -webkit-backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--border-radius);
-    box-shadow: var(--glass-shadow);
-    transition: var(--transition-smooth);
-    pointer-events: none;
-}
 
-.main-header > * {
-    pointer-events: auto;
+    /* WICHTIG: Kein starker Hintergrund, da der Shader die Arbeit macht */
+    background: rgba(255, 255, 255, 0.01);
+
+    /* Ein feiner weißer Rahmen für die Glaskante */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+
+    /* Subtiler Glow nach außen */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+    /* Der klassische Blur ergänzt den Shader perfekt */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+/* Der "Glanz"-Streifen oben auf dem Glas */
+.main-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+    );
+    z-index: 1;
 }
 
 .main-header:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateX(-50%) translateY(-2px); /* Minimaler Lift */
+    box-shadow:
+            0 12px 40px rgba(0, 0, 0, 0.3),
+            0 1px 1px 0 rgba(255, 255, 255, 0.1) inset;
 }
+
+
 
 .nav-container {
     min-height: 70px;
@@ -482,6 +505,12 @@ footer {
     align-items: center;
     padding: 0 32px;
     mix-blend-mode: difference;
+    position: relative;
+    background: radial-gradient(
+            circle at 50% 0%,
+            rgba(255, 255, 255, 0.05) 0%,
+            transparent 70%
+    ); /* Simuliert die Wölbung des Glases durch Licht */
 }
 
 .nav-branding {

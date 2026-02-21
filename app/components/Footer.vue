@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 const lastUpdateDate = ref('');
 const currentYear = computed(() => new Date().getFullYear());

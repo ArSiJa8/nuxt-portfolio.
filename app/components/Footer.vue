@@ -43,7 +43,7 @@
 <script setup>
 import { computed } from 'vue';
 
-// Berechnet das aktuelle Jahr für das Copyright
+const lastUpdateDate = ref('');
 const currentYear = computed(() => new Date().getFullYear());
 
 const socialLinks = [

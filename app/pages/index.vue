@@ -1,6 +1,8 @@
-<script setup>
-</script>
-
 <template>
-  <AboutMe />
+  <NuxtLayout>
+    <main>
+      <AboutMe />
+      <CodeStats />
+    </main>
+  </NuxtLayout>
 </template>

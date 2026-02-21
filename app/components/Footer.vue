@@ -22,8 +22,6 @@
         Last update: {{ lastUpdateDate }}
       </div>
 
-    <div class="footer-last-update">
-      Last update: {{ lastUpdateDate }}
     </div>
   </footer>
 </template>
@@ -57,8 +55,6 @@ onMounted(() => {
 /* Der Wrapper ist die Hitbox */
 .social-link-wrapper {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
   align-items: center;
   justify-content: center;
   padding: 1.5rem 2rem; /* Riesige Klickfläche: 24px hoch/runter, 32px links/rechts */

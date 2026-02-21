@@ -639,3 +639,40 @@ footer {
     transform: translateY(-10px);
     filter: blur(10px);
 }
+
+/* =========================================================
+   MOUSE TRACKING GLOW EFFECT
+   ========================================================= */
+
+.card, .container-white {
+    position: relative;
+    overflow: hidden; /* Damit der Glow nicht übersteht */
+}
+
+/* Der eigentliche Licht-Effekt */
+.card::before, .container-white::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    /* Nutzt CSS Variablen, die per JS gesetzt werden */
+    background: radial-gradient(
+            600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(255, 255, 255, 0.06),
+            transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+/* Glow nur beim Hovern zeigen */
+.card:hover::before, .container-white:hover::before {
+    opacity: 1;
+}
+
+/* Sicherstellen, dass der Inhalt über dem Glow liegt */
+.card > *, .container-white > * {
+    position: relative;
+    z-index: 1;
+}

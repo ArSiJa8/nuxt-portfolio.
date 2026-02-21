@@ -46,13 +46,22 @@ import { computed } from 'vue';
 // Berechnet das aktuelle Jahr für das Copyright
 const currentYear = computed(() => new Date().getFullYear());
 
-// Holt das Datum der letzten Dateiänderung
-const lastUpdateDate = computed(() => {
-  return new Date(document.lastModified).toLocaleDateString('de-DE', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric'
-  });
+const socialLinks = [
+  { name: 'GitHub', url: 'https://github.com/ArSiJa8', icon: 'uil:github', class: 'github' },
+  { name: 'YouTube', url: 'https://youtube.com/@aArSiJa', icon: 'uil:youtube', class: 'youtube' },
+  { name: 'Discord', url: 'https://discord.gg/Kg7A42bPKz', icon: 'ic:baseline-discord', class: 'discord' },
+  { name: 'Email', url: 'mailto:silvan@arsija.net', icon: 'uil:envelope', class: 'email' }
+];
+
+onMounted(() => {
+  if (import.meta.client) {
+    const modified = document.lastModified;
+    if (modified) {
+      lastUpdateDate.value = new Date(modified).toLocaleDateString('de-DE', {
+        day: '2-digit', month: '2-digit', year: 'numeric'
+      });
+    }
+  }
 });
 </script>
 

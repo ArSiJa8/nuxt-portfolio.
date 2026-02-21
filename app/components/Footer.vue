@@ -73,10 +73,9 @@ onMounted(() => {
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* YouTube: Rotes Leuchten */
-.youtube-link:hover {
-  color: #ff0000 !important;
-  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8));
+/* Hover-Effekte auf dem Wrapper steuern das Icon */
+.social-link-wrapper:hover .social-icon {
+  transform: scale(1.3) translateY(-5px);
 }
 
 /* Email: Gelbes Leuchten */

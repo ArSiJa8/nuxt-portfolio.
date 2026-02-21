@@ -60,23 +60,10 @@ onMounted(() => {
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-}
-
-/* Icon-Basisgröße */
-.footer-socials :deep(svg) {
-  width: 1.5em;
-  height: 1.5em;
-}
-
-.footer-socials {
-  display: flex;
-  gap: 1.5rem;
-}
-
-/* Gemeinsame Transition für geschmeidiges Leuchten */
-.footer-socials a {
-  transition: var(--transition-smooth, all 0.3s ease);
-  color: inherit;
+  justify-content: center;
+  padding: 1.5rem 2rem; /* Riesige Klickfläche: 24px hoch/runter, 32px links/rechts */
+  color: rgba(255, 255, 255, 0.5); /* Helleres Grau für bessere Sichtbarkeit */
+  transition: all 0.3s ease;
   text-decoration: none;
 }
 

@@ -54,10 +54,8 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* Grundlayout für den Footer (zentriert alles) */
-footer {
-  text-align: center;
-  padding: 2rem;
+/* Der Wrapper ist die Hitbox */
+.social-link-wrapper {
   display: flex;
   flex-direction: column;
   gap: 1rem;

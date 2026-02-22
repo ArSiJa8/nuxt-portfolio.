@@ -1,6 +1,8 @@
 <script setup>
 const { data: stats, pending } = await useFetch('/api/codestats')
 
+const ActiveDate = 'Feb 21, 2026'
+
 const XP_FACTOR = 0.1
 const getLevel = (xp) => (!xp || isNaN(xp) ? 0 : Math.floor(XP_FACTOR * Math.sqrt(xp)))
 
@@ -46,13 +48,15 @@ const getIcon = (lang) => {
             </div>
             <span class="live-text">Live Sync Active</span>
           </div>
-          <span class="since-text">Tracking since Feb 21, 2026</span>
+          <span class="since-text">Tracking since {{ ActiveDate }}</span>
         </div>
 
         <div class="icon-box">
           <UIcon name="i-heroicons-chart-bar-20-solid" class="icon-main" />
         </div>
         <h2 class="main-title">Coding Activity</h2>
+        <p>This is information from <a href="https://codestats.net/" target="_blank" rel="noopener">Code::Stats</a></p>
+        <h6>This does not analyze everything + it has only been active since {{ ActiveDate }}.</h6>
         <div class="title-line"></div>
       </div>
 

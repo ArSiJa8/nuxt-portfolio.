@@ -2,7 +2,9 @@
 
 </script>
 <template>
-  <main>
-    <AboutMe />
-  </main>
+ <div>
+   <main>
+     <AboutMe />
+   </main>
+ </div>
 </template>

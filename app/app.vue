@@ -1,7 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
 const route = useRoute()
-
 </script>
 
 <template>
@@ -17,7 +16,6 @@ const route = useRoute()
       <NuxtPage />
       <Footer />
     </main>
-
   </div>
 </template>
 
@@ -32,9 +30,20 @@ const route = useRoute()
 
 /* Spezielle Regeln NUR für die Startseite */
 .is-home {
-  margin-top: 100vh; /* Schiebt den Inhalt unter den fixierten Hero */
-  box-shadow: 0 -20px 50px rgba(0,0,0,0.8); /* Trennungseffekt */
+  margin-top: 100vh;
+
+  /* Starker Schatten nach oben, um die Kante zu kaschieren */
+  box-shadow: 0 -50px 150px 30px rgba(0, 0, 0, 0);
+
+  /* Der Gradient sorgt dafür, dass der Content oben weich anfängt */
+  background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      var(--black) 150px
+  );
 }
+
+/* Das ::before Element (schwarzer Schleier) wurde hier entfernt */
 
 .hero-background {
   position: fixed;

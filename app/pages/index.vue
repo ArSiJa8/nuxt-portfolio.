@@ -10,6 +10,7 @@ definePageMeta({
   <NuxtLayout>
     <main>
       <AboutMe />
+      <ProjectsC />
       <CodeStats />
     </main>
   </NuxtLayout>

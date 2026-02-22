@@ -31,7 +31,7 @@
               <span class="tag">Frontend Architecture</span>
               <span class="tag">UI/UX Design</span>
               <span class="tag">Vue & Nuxt</span>
-              <span class="tag">Performance Optimization</span>
+              <span class="tag">Web Development</span>
               <span class="tag">Responsive Web</span>
             </div>
           </div>
@@ -64,7 +64,7 @@ onMounted(() => {
 
 <style scoped>
 .section-container {
-  padding: 80px 20px;
+  padding: 15px 20px;
 }
 
 .about-grid {
@@ -165,5 +165,23 @@ onMounted(() => {
   .tags {
     justify-content: center;
   }
+}
+.markdown-content {
+  /* 1. Wir definieren die Hintergrundfarbe direkt mit 10% Deckkraft (0.1) */
+  /* Das entspricht deinem dunklen Hintergrund, nur eben transparent */
+  background-color: rgba(27, 27, 30, 0.1);
+
+  /* 2. Damit der Text und die Badges NICHT transparent werden, */
+  /* löschen wir das globale 'opacity: 0.1' komplett! */
+  opacity: 1;
+
+  /* 3. Ein leichter Blur macht den Effekt hochwertig (Apple-Look) */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Optional: Etwas Padding und Rundung, damit die Box gut aussieht */
+  padding: 30px;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 </style>

@@ -4,17 +4,18 @@ export default defineNuxtConfig({
 
   // 1. Global Head-Metadata
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' },
-    layoutTransition: { name: 'layout', mode: 'out-in' },
-    head: {
-      htmlAttrs: { lang: 'en' },
-      title: 'ArSiJa | Portfolio',
-      meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-      ]
-    }
-  },
+      // Mode entfernt, um den Routing-Konflikt mit der app.vue Logik zu umgehen
+      pageTransition: { name: 'page' },
+      layoutTransition: { name: 'layout' },
+      head: {
+        htmlAttrs: { lang: 'en' },
+        title: 'ArSiJa | Portfolio',
+        meta: [
+          { charset: 'utf-8' },
+          { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+        ]
+      }
+    },
 
   modules: [
     '@nuxtjs/html-validator',

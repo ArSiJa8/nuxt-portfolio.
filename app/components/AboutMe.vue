@@ -251,7 +251,7 @@ onMounted(() => {
 .tool-icon {
   width: 44px;
   height: 44px;
-  filter: grayscale(100%);
+  filter: grayscale(90%);
   opacity: 0.6;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

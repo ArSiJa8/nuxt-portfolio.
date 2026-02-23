@@ -1,3 +1,7 @@
-<template v-slot:header>
-  <p>nothing here yet</p>
+<script setup lang="ts">
+</script>
+<template>
+  <main>
+    <ContactC />
+  </main>
 </template>

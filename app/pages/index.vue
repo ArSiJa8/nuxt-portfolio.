@@ -1,17 +1,13 @@
 <script setup lang="ts">
-definePageMeta({
-  pageTransition: {
-    name: 'slide-right',
-    mode: 'out-in'
-  }
-})
+
 </script>
+
 <template>
-  <NuxtLayout>
-    <main>
-      <AboutMe />
+  <main>
+   <div>
+     <AboutMe />
       <ProjectsC />
       <CodeStats />
-    </main>
-  </NuxtLayout>
+    </div>
+  </main>
 </template>

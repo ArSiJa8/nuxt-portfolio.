@@ -23,8 +23,10 @@
           </p>
 
           <p class="about-p">
-            Away from the screen, I'm interested in new technologies and
-            the continuous optimization of workflows.
+            Efficiency is my benchmark. Beyond the IDE, I focus on optimizing
+            workflows and leveraging the Nuxt ecosystem to automate the repetitive,
+            streamlining the path from a design concept to a high-performance
+            production app.
           </p>
 
           <div class="skills-box">

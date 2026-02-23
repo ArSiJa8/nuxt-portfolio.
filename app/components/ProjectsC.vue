@@ -119,10 +119,7 @@ onMounted(() => {
   margin-top: 20px;
 }
 
-/* Hover-Effekt für das Bild innerhalb der Karte */
-.card:hover .project-image img {
-  transform: scale(1.05);
-}
+
 
 @media (max-width: 768px) {
   .projects-grid {

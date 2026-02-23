@@ -66,15 +66,16 @@ const closeMenu = () => {
 </script>
 
 <style scoped>
+/* --- Social Links Styling --- */
 .header-socials-desktop {
   display: flex;
-  gap: 12px; /* Etwas enger für 4 Icons */
+  gap: 12px;
   margin-left: 20px;
 }
 
 .header-social-link {
   color: rgba(255, 255, 255, 0.5);
-  font-size: 1.3rem; /* Minimal kleiner für Desktop-Header Balance */
+  font-size: 1.3rem;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -84,12 +85,59 @@ const closeMenu = () => {
   transform: translateY(-2px) scale(1.1);
 }
 
-/* Glow-Farben (Synchron mit Footer) */
+/* Glow-Farben für Social Icons */
 .github:hover  { color: #f3f3ff; filter: drop-shadow(0 0 8px rgba(246, 246, 255, 0.6)); }
 .youtube:hover { color: #ff0000; filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8)); }
 .discord:hover { color: #5865F2; filter: drop-shadow(0 0 8px rgba(88, 101, 242, 0.8)); }
 .email:hover   { color: #facc15; filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.8)); }
 
+/* --- Nav Link Glow + Line Effekt --- */
+.nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent); /* Oder #fff für cleanen Look */
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 8px rgba(85, 135, 255, 0.5);
+}
+
+/* Hover-Zustand */
+.nav-link:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(85, 135, 255, 0.8);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* --- Aktiv-Zustand (Nuxt) --- */
+.nav-link.is-exact-active {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(85, 135, 255, 0.5);
+}
+
+.nav-link.is-exact-active::after {
+  transform: scaleX(1); /* Linie bleibt beim aktiven Link dauerhaft da */
+  background-color: #fff; /* Aktiver Link bekommt weiße Linie für Fokus */
+}
+
+/* --- Mobile Anpassungen --- */
 .mobile-socials {
   display: none;
   gap: 20px;
@@ -102,8 +150,11 @@ const closeMenu = () => {
 @media (max-width: 768px) {
   .header-socials-desktop { display: none; }
   .mobile-socials { display: flex; }
-}
 
-.nav-link.is-exact-active { color: #fff; }
-.nav-link.is-exact-active::after { width: 100%; }
+  /* Im Mobile-Menü zentrieren wir den Glow-Effekt */
+  .nav-link {
+    font-size: 1.5rem;
+    display: inline-block;
+  }
+}
 </style>

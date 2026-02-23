@@ -69,45 +69,8 @@ h2 { color: white; font-weight: 600; }
 h3 { color: rgb(200, 200, 230); }
 
 p { text-align: center; color: white; }
-/* =========================================================
-   MODERN LINK HOVER (Glow + Line)
-   ========================================================= */
-
-a {
-    color: var(--accent);
-    text-decoration: none;
-    position: relative;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-/* Die Linie (vorbereitet) */
-a::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: var(--accent-hover);
-    border-radius: 2px;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    /* Optionaler Glow für die Linie selbst */
-    box-shadow: 0 0 8px rgba(85, 135, 255, 0.5);
-}
-
-/* Hover-Zustand */
-a:hover {
-    color: #a3c0ff; /* Text wird hellweiß */
-    text-shadow: 0 0 10px rgba(85, 135, 255, 0.8); /* Der Glow-Effekt */
-    opacity: 1;
-}
-
-a:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
+a { color: var(--accent); text-decoration: none; transition: var(--transition-smooth); }
+a:hover { opacity: 0.85; }
 
 /* =========================================================
    3. HEADER & NAVIGATION (Liquid Glass)
@@ -272,7 +235,10 @@ nav {
     transition: var(--transition-smooth);
 }
 
-
+.card:hover {
+    transform: translateY(-8px) scale(1.015);
+    background: rgba(255, 255, 255, 0.12);
+}
 
 section { padding: 60px 20px; border-radius: var(--border-radius); }
 
@@ -300,7 +266,11 @@ section { padding: 60px 20px; border-radius: var(--border-radius); }
     max-width: 1000px;
     transition: var(--transition-smooth);
 }
-
+.container-white:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+}
 
 .container-white h1,
 .container-white h2,

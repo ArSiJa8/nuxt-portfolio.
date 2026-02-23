@@ -2,7 +2,7 @@
   <section id="projects" class="section-container">
     <div class="container-white">
       <div class="projects-header">
-        <span class="badge">Portfolio</span>
+        <span class="badge">Placeholders</span>
         <h1>Featured Projects</h1>
         <p>A collection of my recent works, blending aesthetics with functional code.</p>
       </div>
@@ -128,5 +128,18 @@ onMounted(() => {
   .projects-grid {
     grid-template-columns: 1fr;
   }
+}
+/* Entfernt den hellen Schein/Verlauf am Boden des Containers */
+.container-white::before,
+.container-white::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Falls der Effekt direkt als Background-Image auf dem Container liegt */
+.container-white {
+  background-image: none !important;
+  /* Behalte nur die Hintergrundfarbe bei */
+  background-color: #0f0f0f;
 }
 </style>

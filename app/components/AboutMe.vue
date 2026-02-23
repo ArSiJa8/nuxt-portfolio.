@@ -16,9 +16,10 @@
           <h1>About Me</h1>
 
           <p class="about-p">
-            I'm a passionate developer with an eye for aesthetics.
-            My goal is to seamlessly blend code and design to create modern,
-            user-friendly interfaces that simply feel "right".
+            I bridge the gap between complex logic and minimalist design.
+            Specializing in <strong>Vue and Nuxt</strong>, I architect applications where performance
+            meets aesthetics. I’m the developer who obsesses over the small details—ensuring
+            every micro-interaction feels as fluid and responsive as it looks.
           </p>
 
           <p class="about-p">

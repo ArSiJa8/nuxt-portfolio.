@@ -243,14 +243,22 @@ nav {
 section { padding: 60px 20px; border-radius: var(--border-radius); }
 
 .container-white {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(25px) saturate(150%);
-    -webkit-backdrop-filter: blur(25px) saturate(150%);
-    color: var(--white);
+    /* 1. Hintergrund-Transparenz (ca. 6% Weißanteil) */
+    background: rgba(255, 255, 255, 0.06) !important;
+
+    /* 2. Der wichtigste Teil: Der Blur-Effekt für das Glas-Gefühl */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+    /* 3. Ein feiner Rahmen, damit die Box Tiefe bekommt */
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+
+    /* 4. Schatten nach unten für den Schwebe-Effekt */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+    /* Restliche Layout-Werte beibehalten */
     padding: 40px;
     border-radius: var(--border-radius);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -258,7 +266,6 @@ section { padding: 60px 20px; border-radius: var(--border-radius); }
     max-width: 1000px;
     transition: var(--transition-smooth);
 }
-
 .container-white:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.15);
@@ -754,4 +761,118 @@ html {
     opacity: 0;
     filter: blur(1rem); /* Optional: Ein leichter Blur-Effekt */
     transform: translateY(10px); /* Optional: Sanftes Hochrutschen */
+}
+
+/* =========================================================
+   ZUSÄTZLICHE KOMPONENTEN (Nur Ergänzungen)
+   ========================================================= */
+
+/* Überschriften-Erweiterung */
+h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 0.8rem;
+}
+
+/* H5 & H6 sind kleiner als der Standard-Paragraph (1rem/16px) */
+h5 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+h6 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* Interaktive Elemente im Liquid Glass Stil */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-family: var(--font-primary);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--white);
+    color: var(--black) !important;
+}
+
+.btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(120, 160, 255, 0.3);
+}
+
+.btn-glass {
+    background: rgba(255, 255, 255, 0.05);
+    color: white !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Badges für Tech-Stacks oder Status */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(120, 160, 255, 0.1);
+    color: var(--accent);
+    border: 1px solid rgba(120, 160, 255, 0.2);
+    margin: 4px;
+}
+
+/* Eingabefelder im passenden Look */
+input, textarea {
+    width: 100%;
+    padding: 14px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-family: var(--font-primary);
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+input:focus, textarea:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(120, 160, 255, 0.1);
+}
+
+/* Anpassung für Listen innerhalb der Karten */
+.card ul, .container-white ul {
+    list-style-position: inside;
+    margin: 15px 0;
+    color: var(--white);
+}
+
+.card li, .container-white li {
+    margin-bottom: 8px;
 }

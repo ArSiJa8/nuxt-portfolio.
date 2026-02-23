@@ -12,7 +12,7 @@
         </div>
 
         <div class="about-text-content">
-          <span class="badge">Who i am</span>
+          <span class="badge">Who I Am</span>
           <h1>About Me</h1>
 
           <p class="about-p">
@@ -52,7 +52,9 @@
                   :style="{ '--hover-color': tool.color }"
               >
                 <img :src="tool.src" :alt="tool.name" class="tool-icon" />
-                <span class="tool-tooltip">{{ tool.name }}</span>
+                <span class="tool-tooltip">
+                  {{ tool.name }} • {{ calculateExperience(tool.since) }}
+                </span>
               </div>
             </div>
           </div>
@@ -68,34 +70,41 @@ import { onMounted, ref } from 'vue'
 
 const aboutSection = ref(null)
 
+const calculateExperience = (sinceYear) => {
+  const currentYear = new Date().getFullYear();
+  const diff = currentYear - sinceYear;
+  if (diff <= 0) return "Learning";
+  return `${diff} ${diff === 1 ? 'Year' : 'Years'}`;
+};
+
 const handleMouseMove = (e) => {
   const { currentTarget: target, clientX, clientY } = e;
   const rect = target.getBoundingClientRect();
   const x = clientX - rect.left;
   const y = clientY - rect.top;
-
   target.style.setProperty("--mouse-x", `${x}px`);
   target.style.setProperty("--mouse-y", `${y}px`);
 };
 
 const toolGroups = {
   "Programming": [
-    { name: "JavaScript", src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg", color: "#f7df1e" },
-    { name: "TypeScript", src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg", color: "#3178c6" },
-    { name: "Python", src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", color: "#3776ab" },
-    { name: "Java", src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg", color: "#ec2024" }
+    { name: "JavaScript", since: 2021, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg", color: "#f7df1e" },
+    { name: "TypeScript", since: 2021, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg", color: "#3178c6" },
+    { name: "Python", since: 2017, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", color: "#3776ab" },
+    { name: "Java", since: 2017, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg", color: "#ec2024" }
   ],
   "Web Stack": [
-    { name: "Vue.js", src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg", color: "#42b883" },
-    { name: "Node.js", src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg", color: "#68a063" },
-    { name: "HTML5", src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg", color: "#e34f26" },
-    { name: "CSS3", src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg", color: "#1572b6" }
+    { name: "Vue.js", since: 2023, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg", color: "#42b883" },
+    { name: "Nuxt", since: 2023, src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxt/nuxt-original.svg", color: "#2fcc5b" },
+    { name: "Node.js", since: 2022, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg", color: "#68a063" },
+    { name: "HTML5", since: 2020, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg", color: "#e34f26" },
+    { name: "CSS3", since: 2020, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg", color: "#1572b6" }
   ],
   "Design & Dev": [
-    { name: "Git", src: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg", color: "#f05032" },
-    { name: "Figma", src: "https://www.vectorlogo.zone/logos/figma/figma-icon.svg", color: "#f24e1e" },
-    { name: "Docker", src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg", color: "#2496ed" },
-    { name: "Vite", src: "https://www.vectorlogo.zone/logos/vitejsdev/vitejsdev-icon.svg", color: "#646cff" }
+    { name: "Git", since: 2017, src: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg", color: "#f05032" },
+    { name: "Figma", since: 2024, src: "https://www.vectorlogo.zone/logos/figma/figma-icon.svg", color: "#f24e1e" },
+    { name: "Docker", since: 2023, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg", color: "#2496ed" },
+    { name: "Vite", since: 2022, src: "https://www.vectorlogo.zone/logos/vitejsdev/vitejsdev-icon.svg", color: "#646cff" }
   ]
 }
 
@@ -110,137 +119,29 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.section-container { padding: 40px 20px; }
+/* --- BASIC LAYOUT --- */
+.section-container { padding: 40px 20px; position: relative; }
+.container-white { position: relative; overflow: visible; background-color: #0f0f0f; border: 1px solid rgba(255, 255, 255, 0.1); padding: 60px; border-radius: 24px; z-index: 1; }
 
-.swiss-grid {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.12;
-  background-image: radial-gradient(circle, var(--white) 1px, transparent 1px);
-  background-size: 30px 30px;
-  pointer-events: none;
-}
+.about-grid { display: grid; grid-template-columns: 300px 1fr; gap: 60px; margin-bottom: 80px; align-items: center; }
 
-.container-white {
-  position: relative;
-  overflow: hidden;
-  background-color: #0f0f0f;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.container-white::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(255, 255, 255, 0.1),
-      transparent 40%
-  );
-  z-index: 1;
-  transition: background 0.2s ease-out;
-  pointer-events: none;
-}
-
-/* --- 1. PROFILE STYLING --- */
-.about-image-wrapper {
-  position: relative;
-  z-index: 10;
-  padding: 40px;
-  margin: -40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.profile-frame {
-  width: 260px;
-  height: 320px;
-  background: #2a2a2a;
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: visible;
-  position: relative;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.profile-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all 0.4s ease;
-}
-
-.about-image-wrapper:hover .profile-frame {
-  transform: scale(1.05) translateY(-5px);
-  border-color: #ffcc33;
-  z-index: 20;
-}
-
-.about-image-wrapper:hover .profile-img {
-  filter: drop-shadow(0 0 15px rgba(255, 204, 51, 0.6));
-  transform: scale(1.1);
-}
-
-/* --- 2. EXPERTISE DESIGN --- */
-.skills-box {
-  margin-top: 50px;
-  padding-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.expertise-label {
-  text-align: center;
-  font-size: 1.4rem !important;
-  font-weight: 600 !important;
-  color: var(--white) !important;
-  margin-bottom: 25px !important;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-}
-
-.tag {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 8px 18px;
-  border-radius: 12px;
-  font-size: 0.85rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.tag:hover {
-  background: rgba(120, 160, 255, 0.15);
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-3px);
-}
-
-/* --- 3. LANGUAGES & TOOLS (Fixed Tooltips) --- */
+/* --- TOOLS GRID FIX --- */
 .tools-grid-horizontal {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 40px;
   width: 100%;
+  margin-top: 30px;
 }
 
 .icon-row {
   display: flex;
-  gap: 15px;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 20px;
+  justify-content: center; /* Zentriert die Icons unter dem Kategorienamen */
 }
 
+/* --- ICON & TOOLTIP LOGIC --- */
 .icon-wrapper {
   position: relative;
   display: flex;
@@ -251,51 +152,50 @@ onMounted(() => {
 .tool-icon {
   width: 44px;
   height: 44px;
-  filter: grayscale(90%);
-  opacity: 0.6;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.5;
+  filter: grayscale(0%);
+  transition: all 0.3s ease;
 }
 
 .icon-wrapper:hover .tool-icon {
-  filter: grayscale(0%)
-  drop-shadow(0 0 8px var(--hover-color))
-  drop-shadow(0 0 15px var(--hover-color));
-  transform: translateY(-8px) scale(1.1);
+  filter: grayscale(0%) drop-shadow(0 0 10px var(--hover-color));
   opacity: 1;
+  transform: translateY(-5px);
 }
 
 .tool-tooltip {
   position: absolute;
-  top: 0;
-  background: #000;
+  bottom: 140%; /* Höher platziert damit es nicht überlappt */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(0, 0, 0, 0.95);
   color: white;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.7rem;
-  opacity: 0;
-  transition: all 0.3s ease;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
   white-space: nowrap;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 100;
-  pointer-events: none; /* Keine eigene Hitbox */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  z-index: 999;
 }
 
 .icon-wrapper:hover .tool-tooltip {
   opacity: 1;
-  transform: translateY(-45px); /* Perfekte Position über dem Icon */
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
-/* Layout */
-.about-grid { display: grid; grid-template-columns: 300px 1fr; gap: 40px; margin-bottom: 60px; position: relative; z-index: 5; }
-.about-p { margin-bottom: 25px !important; line-height: 1.8; }
+/* --- REST STYLING --- */
+.category-name { font-size: 0.9rem; opacity: 0.5; margin-bottom: 20px; text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+.profile-frame { width: 260px; height: 320px; border-radius: 24px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); }
+.profile-img { width: 100%; height: 100%; object-fit: cover; }
+.tag { background: rgba(255, 255, 255, 0.05); padding: 8px 18px; border-radius: 12px; font-size: 0.85rem; border: 1px solid rgba(255, 255, 255, 0.1); cursor: default; }
+.tags { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 15px; }
 
-@media (max-width: 900px) {
-  .tools-grid-horizontal { grid-template-columns: 1fr; gap: 40px; }
-}
-
-@media (max-width: 850px) {
-  .about-grid { grid-template-columns: 1fr; justify-items: center; }
-  .about-text-content { text-align: center; }
-  .profile-frame { width: 220px; height: 220px; border-radius: 50%; overflow: hidden; }
-}
+@media (max-width: 1024px) { .tools-grid-horizontal { grid-template-columns: 1fr; gap: 50px; } }
+@media (max-width: 850px) { .about-grid { grid-template-columns: 1fr; text-align: center; } .tags { justify-content: center; } }
 </style>

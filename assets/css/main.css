@@ -712,7 +712,7 @@ html {
 }
 
 /* Falls du Tailwind nutzt, bleibt dein @theme oder @import "tailwindcss" hier stehen */
-@import "tailwindcss";
+
 
 /* Der Zustand während der Animation */
 .page-enter-active,
@@ -875,3 +875,4 @@ input:focus, textarea:focus {
     opacity: 0;
     transform: translateX(50px);
 }
+

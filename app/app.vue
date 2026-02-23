@@ -1,6 +1,32 @@
 <script setup>
 import { useRoute } from 'vue-router'
 const route = useRoute()
+// Nur ausführen, wenn wir im Browser sind
+if (process.client) {
+  const cursor = document.createElement('div');
+  cursor.classList.add('custom-cursor');
+  document.body.appendChild(cursor);
+
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  // Liste aller Elemente, die den "auffälligen" Wechsel triggern sollen
+  const clickables = 'a, button, .hamburger, .nav-link, .btn, input, textarea';
+
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(clickables)) {
+      cursor.classList.add('cursor-hover');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(clickables)) {
+      cursor.classList.remove('cursor-hover');
+    }
+  });
+}
 </script>
 
 <template>

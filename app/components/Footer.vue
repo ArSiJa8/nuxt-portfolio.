@@ -1,18 +1,17 @@
 <template>
-  <footer class="mt-16 px-8 py-24 border-t border-white/10 bg-black">
-    <div class="max-w-6xl mx-auto flex flex-col items-center gap-12">
+  <footer class="footer-main">
+    <div class="footer-container">
 
-      <div class="text-sm tracking-widest text-white/60">
-        &copy; {{ currentYear }} <span class="text-white font-bold tracking-normal">ArSiJa</span>. All rights reserved.
+      <div class="footer-copyright">
+        &copy; {{ currentYear }} <span class="white-text">ArSiJa</span>
       </div>
 
-      <nav class="flex items-center justify-center" aria-label="Social Media">
+      <nav class="footer-socials" aria-label="Social Media">
         <a v-for="link in socialLinks"
            :key="link.name"
            :href="link.url"
            target="_blank"
            rel="noopener"
-           :aria-label="link.name"
            :class="['social-link-wrapper', link.class]">
           <Icon :name="link.icon" class="social-icon" />
         </a>
@@ -52,39 +51,57 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* Der Wrapper ist die Hitbox */
-.social-link-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem 2rem; /* Riesige Klickfläche: 24px hoch/runter, 32px links/rechts */
-  color: rgba(255, 255, 255, 0.5); /* Helleres Grau für bessere Sichtbarkeit */
-  transition: all 0.3s ease;
-  text-decoration: none;
+.footer-main {
+  margin-top: 2rem;
+  padding: 3rem 2rem; /* Viel kompakter als vorher */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: #000;
 }
 
-/* Das eigentliche Icon */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Fix: war items-center */
+  gap: 1.5rem; /* Weniger Abstand zwischen den Elementen */
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-link-wrapper {
+  display: inline-flex;
+  padding: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
 .social-icon {
-  font-size: 2rem; /* Etwas größer (32px) */
+  font-size: 1.8rem; /* Etwas kleiner für besseres Alignment */
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Hover-Effekte auf dem Wrapper steuern das Icon */
 .social-link-wrapper:hover .social-icon {
-  transform: scale(1.3) translateY(-5px);
+  transform: scale(1.2) translateY(-3px);
 }
 
-/* Farben & Glow-Effekte */
-.github:hover  { color: #78a0ff; filter: drop-shadow(0 0 15px rgba(120, 160, 255, 0.6)); }
+/* Deine Wunsch-Glow Effekte */
+.github:hover  { color: #f3f3ff; filter: drop-shadow(0 0 15px rgba(246, 246, 255, 0.6)); }
 .youtube:hover { color: #ff0000; filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.6)); }
 .discord:hover { color: #5865F2; filter: drop-shadow(0 0 15px rgba(88, 101, 242, 0.6)); }
 .email:hover   { color: #facc15; filter: drop-shadow(0 0 15px rgba(250, 204, 21, 0.6)); }
 
+.footer-copyright { color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; }
+.white-text { color: #fff; font-weight: 700; }
+
 .update-info {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.2);
   text-transform: uppercase;
-  font-style: italic;
-  letter-spacing: 0.3em;
-  color: rgba(255, 255, 255, 0.25);
 }
 </style>

@@ -3,19 +3,30 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   // 1. Global Head-Metadata
-  app: {
-      // Mode entfernt, um den Routing-Konflikt mit der app.vue Logik zu umgehen
-      pageTransition: { name: 'page' },
-      layoutTransition: { name: 'layout' },
-      head: {
-        htmlAttrs: { lang: 'en' },
-        title: 'ArSiJa | Portfolio',
-        meta: [
-          { charset: 'utf-8' },
-          { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-        ]
-      }
-    },
+app: {
+    pageTransition: { name: 'page' },
+    layoutTransition: { name: 'layout' },
+    head: {
+      htmlAttrs: { lang: 'en' },
+      // %s ist der Platzhalter für den Seitentitel (z.B. "About")
+      // Der Text danach ist dein festes Suffix.
+      titleTemplate: '%s | ArSiJa',
+
+      // Das hier ist der Standard-Titel, falls eine Seite mal KEINEN eigenen Namen hat
+      title: 'Portfolio',
+
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+      ]
+    }
+  },
+
+  // SEO & Site Config (Hier wird das globale "nuxt-portfolio" überschrieben)
+  site: {
+    name: 'ArSiJa | Portfolio',
+    url: 'https://arsija.net/' // Optional, aber gut für SEO
+  },
 
   modules: [
     '@nuxtjs/html-validator',
@@ -31,7 +42,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/test-utils',
     '@nuxt/fonts',
-    '@nuxt/scripts', // Modul ist bereits vorhanden
+    '@nuxt/scripts',
     '@formkit/auto-animate',
     '@nuxt/content',
     '@nuxtjs/color-mode'
@@ -51,7 +62,6 @@ export default defineNuxtConfig({
 
   gtag: { id: 'G-KMQQ7THXSG' },
 
-  // Konfiguration für Microsoft Clarity via Nuxt Scripts
   scripts: {
     registry: {
       clarity: {

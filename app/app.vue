@@ -53,4 +53,34 @@ const route = useRoute()
   height: 100vh;
   z-index: -1;
 }
+
+/* --- NEU: Transition Animationen --- */
+
+/* Hero Fade Effekt */
+.fade-hero-enter-active,
+.fade-hero-leave-active {
+  transition: opacity 0.6s ease;
+}
+
+.fade-hero-enter-from,
+.fade-hero-leave-to {
+  opacity: 0;
+}
+
+/* Globale Page-Transitions (Nuxt Standard-Klassen) */
+/* Falls du 'page' in der nuxt.config nutzt: */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s ease-in-out;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
 </style>

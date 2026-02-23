@@ -8,9 +8,11 @@ const route = useRoute()
   <div>
     <Header />
 
-    <div v-if="route.path === '/'" class="hero-background">
-      <Hero />
-    </div>
+    <Transition name="fade-hero">
+      <div v-if="route.path === '/'" class="hero-background">
+        <Hero />
+      </div>
+    </Transition>
 
     <main :class="['page-content', { 'is-home': route.path === '/' }]">
       <NuxtPage />
@@ -26,24 +28,20 @@ const route = useRoute()
   z-index: 10;
   background-color: var(--black);
   width: 100%;
+  /* Fix für flüssige Übergänge: Mindesthöhe verhindert Springen */
+  min-height: 100vh;
 }
 
 /* Spezielle Regeln NUR für die Startseite */
 .is-home {
   margin-top: 100vh;
-
-  /* Starker Schatten nach oben, um die Kante zu kaschieren */
   box-shadow: 0 -50px 150px 30px rgba(0, 0, 0, 0);
-
-  /* Der Gradient sorgt dafür, dass der Content oben weich anfängt */
   background: linear-gradient(
       to bottom,
       transparent 0%,
       var(--black) 150px
   );
 }
-
-/* Das ::before Element (schwarzer Schleier) wurde hier entfernt */
 
 .hero-background {
   position: fixed;

@@ -42,11 +42,11 @@ import { onMounted } from 'vue';
 
 const projects = [
   {
-    title: 'Liquid Glass UI',
-    description: 'A modern design system based on glassmorphism and smooth animations.',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800',
-    tags: ['Vue 3', 'Nuxt', 'CSS'],
-    link: '#'
+    title: 'Swisstiers',
+    description: 'A modern design Minecraft Leaderboard for Swiss Minecaft Players.',
+    image: 'https://i.ibb.co/WrPSRVf/Swisstiers2.png',
+    tags: ['Python', 'Nuxt 4', 'CSS'],
+    link: 'https://swisstiers.ch/'
   },
   {
     title: 'Neural Dashboard',

@@ -21,7 +21,14 @@
             <p>{{ project.description }}</p>
 
             <div class="project-actions">
-              <NuxtLink :to="project.link" class="btn btn-glass">View Project</NuxtLink>
+              <NuxtLink
+                  :to="project.link"
+                  class="btn btn-glass"
+                  target="_blank"
+                  rel="noopener"
+              >
+                View Project
+              </NuxtLink>
             </div>
           </div>
         </div>

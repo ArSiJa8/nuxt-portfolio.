@@ -45,7 +45,8 @@ app: {
     '@nuxt/scripts',
     '@formkit/auto-animate',
     '@nuxt/content',
-    '@nuxtjs/color-mode'
+    '@nuxtjs/color-mode',
+    '@nuxtjs/ngrok'
   ],
 
   // 2. CSS
@@ -69,6 +70,20 @@ app: {
       }
     }
   },
+
+  vite: {
+      server: {
+        allowedHosts: true // This allows all hosts, including any new Ngrok URL
+      }
+    },
+
+  ngrok: {
+      authtoken_from_env: true, // Use NGROK_AUTHTOKEN environment variable
+      // authtoken: '.', // Or use this option
+      // auth: 'username:password',
+      // domain: 'your_custom_domain',
+      production: true,
+    },
 
   // 4. Runtime Config
   runtimeConfig: {

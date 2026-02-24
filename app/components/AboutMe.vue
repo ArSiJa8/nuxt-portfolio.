@@ -16,6 +16,13 @@
           <h1>About Me</h1>
 
           <p class="about-p">
+            Based in Switzerland, I’ve been navigating the evolving world of code
+            for over <strong>9 years</strong>. What started as a fascination with
+            logic has grown into a specialized focus on **Vue and Nuxt**,
+            where I bridge the gap between complex architecture and minimalist design.
+          </p>
+
+          <p class="about-p">
             I bridge the gap between complex logic and minimalist design.
             Specializing in <strong>Vue and Nuxt</strong>, I architect applications where performance
             meets aesthetics. I’m the developer who obsesses over the small details—ensuring

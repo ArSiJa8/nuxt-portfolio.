@@ -2,7 +2,7 @@
   <section id="projects" class="section-container">
     <div class="container-white">
       <div class="projects-header">
-        <span class="badge">Placeholders</span>
+        <span class="badge">My Fovourites</span>
         <h1>Featured Projects</h1>
         <p>A collection of my recent works, blending aesthetics with functional code.</p>
       </div>

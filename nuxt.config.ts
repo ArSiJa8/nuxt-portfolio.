@@ -82,7 +82,7 @@ export default defineNuxtConfig({
 
   ngrok: {
     authtoken_from_env: true,
-    production: true,
+    production: false,
   },
 
   // 4. Runtime Config

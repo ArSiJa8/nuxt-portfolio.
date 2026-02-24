@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+    /* Your custom design tokens go here */
+}
+
 
 /* =========================================================
    PORTFOLIO CSS - Main Stylesheet

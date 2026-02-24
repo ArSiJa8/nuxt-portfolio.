@@ -32,17 +32,20 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     'reka-ui',
     'nuxt-charts',
-    '@nuxt/ui', // Beinhaltet bereits Tailwind CSS!
+    // Beinhaltet bereits Tailwind CSS!
+    '@nuxt/ui',
     '@nuxtjs/seo',
     '@vueuse/nuxt',
     '@nuxt/eslint',
     '@nuxt/test-utils',
     '@nuxt/fonts',
     '@nuxt/scripts',
-    '@formkit/auto-animate/nuxt', // Wichtig: /nuxt Suffix für das Modul
+    // Wichtig: /nuxt Suffix für das Modul
+    '@formkit/auto-animate/nuxt',
     '@nuxt/content',
     '@nuxtjs/color-mode',
-    '@nuxtjs/ngrok'
+    '@nuxtjs/ngrok',
+    '@nuxt/hints'
   ],
 
   // 2. CSS

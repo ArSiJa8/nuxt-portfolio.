@@ -10,6 +10,7 @@
         <a v-for="link in socialLinks"
            :key="link.name"
            :href="link.url"
+           :aria-label="link.name"
            target="_blank"
            rel="noopener"
            :class="['social-link-wrapper', link.class]">

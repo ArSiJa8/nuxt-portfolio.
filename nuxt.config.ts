@@ -1,20 +1,16 @@
+// nuxt.config.ts
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
   // 1. Global Head-Metadata
-app: {
-    pageTransition: { name: 'page' },
-    layoutTransition: { name: 'layout' },
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' },
     head: {
       htmlAttrs: { lang: 'en' },
-      // %s ist der Platzhalter für den Seitentitel (z.B. "About")
-      // Der Text danach ist dein festes Suffix.
       titleTemplate: '%s | ArSiJa',
-
-      // Das hier ist der Standard-Titel, falls eine Seite mal KEINEN eigenen Namen hat
       title: 'Portfolio',
-
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
@@ -22,10 +18,10 @@ app: {
     }
   },
 
-  // SEO & Site Config (Hier wird das globale "nuxt-portfolio" überschrieben)
+  // SEO & Site Config
   site: {
     name: 'ArSiJa | Portfolio',
-    url: 'https://arsija.net/' // Optional, aber gut für SEO
+    url: 'https://arsija.net/'
   },
 
   modules: [
@@ -36,30 +32,37 @@ app: {
     '@nuxt/icon',
     'reka-ui',
     'nuxt-charts',
-    '@nuxt/ui',
+    '@nuxt/ui', // Beinhaltet bereits Tailwind CSS!
     '@nuxtjs/seo',
     '@vueuse/nuxt',
     '@nuxt/eslint',
     '@nuxt/test-utils',
     '@nuxt/fonts',
     '@nuxt/scripts',
-    '@formkit/auto-animate',
+    '@formkit/auto-animate/nuxt', // Wichtig: /nuxt Suffix für das Modul
     '@nuxt/content',
     '@nuxtjs/color-mode',
     '@nuxtjs/ngrok'
   ],
 
   // 2. CSS
+  // Hinweis: Achte darauf, dass der Pfad ~/../assets tatsächlich existiert.
+  // Meistens reicht ~/assets/css/main.css
   css: ['~/../assets/css/main.css'],
 
   // 3. Modul-Konfigurationen
   htmlValidator: {
+    usePrettier: true,
     options: {
       rules: { 'prefer-native-element': 'warn' }
     }
   },
 
-  tailwindcss: { viewer: true },
+  // Falls du spezifische Tailwind-Optionen brauchst, obwohl @nuxt/ui es nutzt:
+  tailwindcss: {
+    viewer: true,
+    exposeConfig: true
+  },
 
   gtag: { id: 'G-KMQQ7THXSG' },
 
@@ -72,18 +75,15 @@ app: {
   },
 
   vite: {
-      server: {
-        allowedHosts: true // This allows all hosts, including any new Ngrok URL
-      }
-    },
+    server: {
+      allowedHosts: true
+    }
+  },
 
   ngrok: {
-      authtoken_from_env: true, // Use NGROK_AUTHTOKEN environment variable
-      // authtoken: '.', // Or use this option
-      // auth: 'username:password',
-      // domain: 'your_custom_domain',
-      production: true,
-    },
+    authtoken_from_env: true,
+    production: true,
+  },
 
   // 4. Runtime Config
   runtimeConfig: {

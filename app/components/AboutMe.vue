@@ -18,24 +18,19 @@
           <p class="about-p">
             Based in Switzerland, I’ve been navigating the evolving world of code
             for over <strong>9 years</strong>. What started as a fascination with
-            logic has grown into a specialized focus on **Vue and Nuxt**,
-            where I bridge the gap between complex architecture and minimalist design.
+            Minecraft Mods has grown into a specialized focus on **Vue and Nuxt**,
+            where I bridge the gap between complex architecture and smooth design.
           </p>
 
           <p class="about-p">
-            I bridge the gap between complex logic and minimalist design.
             Specializing in <strong>Vue and Nuxt</strong>, I architect applications where performance
             meets aesthetics. I’m the developer who obsesses over the small details—ensuring
             every micro-interaction feels as fluid and responsive as it looks.
           </p>
-
-          <p class="about-p">
-            Efficiency is my benchmark. Beyond the IDE, I focus on optimizing
-            workflows and leveraging the Nuxt ecosystem to automate the repetitive,
-            streamlining the path from a design concept to a high-performance
-            production app.
+          <p class="about-p" style="margin-bottom: 1rem;">
+            One of my main goals is to ensure that
+            the code looks as clean as the website itself.
           </p>
-
           <div class="skills-box">
             <h2 class="expertise-label">Expertise</h2>
             <div class="tags">

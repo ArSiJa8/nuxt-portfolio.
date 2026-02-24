@@ -1,6 +1,6 @@
 <template>
   <header class="main-header">
-    <nav class="nav-container">
+    <nav class="nav-container" aria-label="main-header">
       <NuxtLink to="/" class="nav-branding">ArSiJa</NuxtLink>
 
       <ul class="nav-menu" :class="{ 'active': isMenuActive }">
@@ -14,8 +14,8 @@
             {{ item.name }}
           </NuxtLink>
         </li>
-        <li class="mobile-socials">
-          <a v-for="link in socialLinks" :key="link.name" :href="link.url" target="_blank" :class="['header-social-link', link.class]">
+        <li class="mobile-socials" aria-label="Social Links">
+          <a v-for="link in socialLinks" :key="link.name" :href="link.url" target="_blank" :class="['header-social-link', link.class]" aria-label="social link">
             <Icon :name="link.icon" />
           </a>
         </li>

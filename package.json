@@ -33,6 +33,7 @@
     "@vite-pwa/nuxt": "^1.1.1",
     "@vueuse/nuxt": "^14.2.1",
     "better-sqlite3": "^12.6.2",
+    "buttercms": "^3.0.3",
     "nuxt": "^4.3.1",
     "nuxt-charts": "^2.1.2",
     "nuxt-gtag": "^4.1.0",

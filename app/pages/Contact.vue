@@ -1,7 +1,7 @@
 <script setup lang="ts">
 </script>
 <template>
-  <main>
+  <div>
     <ContactC />
-  </main>
+  </div>
 </template>

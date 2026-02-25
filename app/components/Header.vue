@@ -45,6 +45,7 @@ const menuItems = [
   { name: 'About', path: '/About' },
   { name: 'Contact', path: '/Contact' },
   { name: 'Projects', path: '/Projects' },
+  { name: 'Blog', path: '/Blog' },
 ];
 
 const socialLinks = [

@@ -3,8 +3,6 @@
 </script>
 <template>
  <div>
-   <main>
-     <AboutMe />
-   </main>
+   <AboutMe />
  </div>
 </template>

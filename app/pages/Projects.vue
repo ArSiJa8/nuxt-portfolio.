@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <div>
     <ProjectsC />
-  </main>
+  </div>
 </template>

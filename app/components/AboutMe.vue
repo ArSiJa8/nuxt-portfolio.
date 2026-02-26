@@ -18,7 +18,7 @@
           <p class="about-p">
             Based in Switzerland, I’ve been navigating the evolving world of code
             for over <strong>9 years</strong>. What started as a fascination with
-            Minecraft Mods has grown into a specialized focus on **Vue and Nuxt**,
+            Minecraft Mods has grown into a specialized focus on <strong>Vue</strong> and <strong>Nuxt</strong>,
             where I bridge the gap between complex architecture and smooth design.
           </p>
 

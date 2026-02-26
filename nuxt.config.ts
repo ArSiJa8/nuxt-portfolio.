@@ -94,6 +94,7 @@ export default defineNuxtConfig({
       posthogPublicKey: 'phc_sTOIMacijF65vJNzp5keZLAhcMoQfWVhsntSKUiIkVF',
       posthogHost: 'https://eu.i.posthog.com',
       posthogDefaults: '2026-01-30'
-    }
+    },
+    wakatimeKey: process.env.WAKATIME_KEY
   }
 })

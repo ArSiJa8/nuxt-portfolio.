@@ -49,16 +49,17 @@ const projects = [
     link: 'https://swisstiers.ch/'
   },
   {
-    title: 'Neural Dashboard',
-    description: 'Data visualization platform for AI-driven analytics and neural networks.',
-    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800',
-    tags: ['Three.js', 'API', 'WebGL'],
-    link: '#'
+    title: 'Web Developer Cheatsheet',
+    description: 'A cheatsheet with all important information for Web Development,' +
+        ' mainly for Vue/Nuxt. It also includes CSS, HTML and Javascript Cheatsheets',
+    image: 'https://i.ibb.co/HTFSwJ0m/Screenshot-2026-02-26-213335.png',
+    tags: ['PDF'],
+    link: '/projects/cheatsheet.pdf'
   }
 ];
 
 onMounted(() => {
-  // Reveal Logic (passend zu deinem main.css)
+  // Reveal Logic
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {

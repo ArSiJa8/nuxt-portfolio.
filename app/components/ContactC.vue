@@ -58,7 +58,7 @@
           <div class="form-group">
             <textarea
                 name="message"
-                placeholder="Tell me about your project..."
+                placeholder="Your message..."
                 rows="5"
                 required
                 @invalid="e => e.target.setCustomValidity('Please enter your message here.')"

@@ -51,7 +51,7 @@ export default defineNuxtConfig({
   // 2. CSS
   // Hinweis: Achte darauf, dass der Pfad ~/../assets tatsächlich existiert.
   // Meistens reicht ~/assets/css/main.css
-  css: ['~/../assets/css/main.css'],
+  css: ['~/assets/css/main.css'],
 
   // 3. Modul-Konfigurationen
   htmlValidator: {

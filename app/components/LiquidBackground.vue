@@ -76,7 +76,7 @@ onMounted(() => {
 
   const img = new Image();
   img.crossOrigin = "anonymous";
-  img.src = "~/../assets/imgs/wallpaper.jpg"; // Pfad zu deinem Wallpaper
+  img.src = "~/assets/imgs/wallpaper.jpg"; // Pfad zu deinem Wallpaper
 
   img.onload = () => {
     const tex = gl.createTexture();

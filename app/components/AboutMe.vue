@@ -7,7 +7,7 @@
       <div class="about-grid">
         <div class="about-image-wrapper">
           <div class="profile-frame">
-            <img src="~/../assets/imgs/profile.png" alt="ArSiJa" class="profile-img" />
+            <img src="~/assets/imgs/profile.png" alt="ArSiJa" class="profile-img" />
           </div>
         </div>
 

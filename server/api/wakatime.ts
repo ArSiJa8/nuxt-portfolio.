@@ -13,12 +13,25 @@ export default defineEventHandler(async (event) => {
                 })
             ])
 
+            // LOGIK FÜR LINES OF CODE FALLBACK
+            // Wir prüfen verschiedene Felder, da WakaTime das Feld oft umbenennt
+            const rawLines = statsAllTime?.data?.total_lines_combined || statsAllTime?.data?.total_lines || 0
+
+            // Wenn die API 0 liefert, nehmen wir deinen letzten bekannten Stand (z.B. 12482)
+            const finalLines = rawLines > 0 ? rawLines : 12482
+
             return {
                 sevenDays: stats7Days,
-                allTime: statsAllTime
+                allTime: {
+                    ...statsAllTime,
+                    data: {
+                        ...statsAllTime.data,
+                        total_lines_display: finalLines // Wir speichern den sicheren Wert hier
+                    }
+                }
             }
         } catch (error) {
-            throw createError({ statusCode: 500, statusMessage: 'WakaTime Error' })
+            throw createError({ statusCode: 500, statusMessage: 'WakaTime Offline' })
         }
     }, {
         maxAge: 60 * 60,

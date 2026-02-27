@@ -13,28 +13,29 @@ export default defineEventHandler(async (event) => {
                 })
             ])
 
-            // LOGIK FÜR LINES OF CODE FALLBACK
-            // Wir prüfen verschiedene Felder, da WakaTime das Feld oft umbenennt
+            // 1. Fallback für Lines of Code (falls API 0 liefert)
             const rawLines = statsAllTime?.data?.total_lines_combined || statsAllTime?.data?.total_lines || 0
-
-            // Wenn die API 0 liefert, nehmen wir deinen letzten bekannten Stand (z.B. 12482)
             const finalLines = rawLines > 0 ? rawLines : 12482
+
+            // 2. Echtzeit-Status Check (10-Minuten-Fenster)
+            const lastUpdateStr = stats7Days?.data?.modified_at || new Date().toISOString()
+            const lastHeartbeat = new Date(lastUpdateStr).getTime()
+            const now = new Date().getTime()
+            const isActive = (now - lastHeartbeat) < 600000 // 10 Minuten
 
             return {
                 sevenDays: stats7Days,
                 allTime: {
                     ...statsAllTime,
-                    data: {
-                        ...statsAllTime.data,
-                        total_lines_display: finalLines // Wir speichern den sicheren Wert hier
-                    }
-                }
+                    data: { ...statsAllTime.data, total_lines_display: finalLines }
+                },
+                isActive
             }
         } catch (error) {
-            throw createError({ statusCode: 500, statusMessage: 'WakaTime Offline' })
+            throw createError({ statusCode: 500, statusMessage: 'WakaTime API Offline' })
         }
     }, {
-        maxAge: 60 * 60,
+        maxAge: 60 * 15, // 15 Min Cache für frische Heartbeats
         name: 'wakatimeStats',
         getKey: () => 'global'
     })()

@@ -45,7 +45,8 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxtjs/color-mode',
     '@nuxtjs/ngrok',
-    '@nuxt/hints'
+    '@nuxt/hints',
+    'nuxt-echarts'
   ],
 
   // 2. CSS

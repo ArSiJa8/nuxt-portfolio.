@@ -1,22 +1,17 @@
 <script setup>
-/**
- * WakaTime Integration - Final Version
- * Logic: Realtime Status, Fallback LoC, SVG Donut Charts & Tooltips
- */
 const { data: stats, pending } = await useFetch('/api/wakatime')
 
-const ActiveDate = 'Feb 21, 2026'
-
-// Zeit-Formatierer
 const formatTime = (timeString) => {
-  if (!timeString) return '0h 0m'
+  if (!timeString || timeString === '0 mins') return '0m'
   return timeString.replace(/\s*hrs?\s*/g, 'h ').replace(/\s*mins?\s*/g, 'm').trim()
 }
 
-// Daten-Mapping
-const topLanguages = computed(() => stats.value?.sevenDays?.data?.languages?.slice(0, 5) || [])
-const editors = computed(() => stats.value?.sevenDays?.data?.editors || [])
-const totalLines = computed(() => stats.value?.allTime?.data?.total_lines_display?.toLocaleString() || '12,482')
+// Mappings
+const topLanguages = computed(() => stats.value?.sevenDays?.languages?.slice(0, 5) || [])
+const editors = computed(() => stats.value?.sevenDays?.editors || [])
+const sevenDaysTotal = computed(() => stats.value?.sevenDays?.total_text || '0 hrs')
+const totalTimeAll = computed(() => stats.value?.allTime?.human_readable_total || '0 hrs')
+const totalLines = computed(() => stats.value?.allTime?.total_lines_display?.toLocaleString() || '12,482')
 
 const langColors = ['#3178c6', '#41b883', '#3d59a1', '#f7df1e', '#e34f26']
 const editorColor = '#00cdfe'
@@ -35,79 +30,57 @@ const getIcon = (lang) => {
 
 <template>
   <section class="coding-activity-wrapper">
-    <div class="container-custom">
+    <div class="container-custom" v-if="!pending && stats">
 
       <div class="header-unit">
-        <div class="live-status-container">
-          <div class="live-badge" :class="{ 'is-coding': stats?.isActive }">
-            <div class="pulse-wrapper">
-              <span class="pulse-dot-fixed"></span>
-              <span class="pulse-ring"></span>
-            </div>
-            <span class="live-text">{{ stats?.isActive ? 'Coding Now' : 'Currently Away' }}</span>
-          </div>
-          <span class="since-text">Global metrics since {{ ActiveDate }}</span>
+        <div class="live-badge" :class="{ 'is-coding': stats.isActive }">
+          <div class="pulse-wrapper"><span class="pulse-dot-fixed"></span><span class="pulse-ring"></span></div>
+          <span class="live-text">{{ stats.isActive ? 'Coding Now' : 'Currently Away' }}</span>
         </div>
-
         <h2 class="main-title">Development Activity</h2>
-
-        <div class="update-info-box">
-          <span class="badge-update">Updates every 24 Hours</span>
-          <p class="accuracy-note">From what I see now, this isn't that accurate.</p>
-        </div>
       </div>
 
-      <div v-if="!pending && stats" class="stats-flex-container">
+      <div class="stats-flex-container">
 
         <div class="stat-card">
           <h3 class="card-label">Overall Analytics</h3>
-          <div class="stats-display-vertical">
-            <div class="stat-block">
-              <span class="stat-value-large">{{ formatTime(stats?.allTime?.data?.human_readable_total) }}</span>
-              <span class="stat-sublabel">Total Time Invested</span>
-            </div>
-            <div class="divider-glass"></div>
-            <div class="stat-block">
-              <span class="stat-value-mid">{{ totalLines }}</span>
-              <span class="stat-sublabel">Lines of Code</span>
-              <div class="loc-info-badge">
-                <UIcon name="i-heroicons-information-circle" class="loc-info-icon" />
-                <span>Aggregated from all projects</span>
-              </div>
-            </div>
+          <div class="stat-block">
+            <span class="stat-value-large">{{ formatTime(totalTimeAll) }}</span>
+            <span class="stat-sublabel">Total Lifetime</span>
+          </div>
+          <div class="divider-glass"></div>
+          <div class="stat-block">
+            <span class="stat-value-mid">{{ totalLines }}</span>
+            <span class="stat-sublabel">Lines of Code</span>
           </div>
         </div>
 
         <div class="stat-card">
-          <h3 class="card-label">Editor Usage</h3>
+          <h3 class="card-label">Editor Usage (7D)</h3>
           <div class="visual-content">
-            <div class="donut-container chart-hover">
+            <div class="donut-container">
               <svg viewBox="0 0 36 36" class="donut">
                 <path class="donut-ring" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
                 <path class="donut-segment" :stroke="editorColor" stroke-width="3" stroke-dasharray="100, 0" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"></path>
               </svg>
-              <div class="donut-center default-text">
-                <span class="editor-name-center">{{ editors[0]?.name || 'IDE' }}</span>
-              </div>
-              <div class="custom-tooltip">
-                <span>{{ editors[0]?.text || 'Active' }}</span>
+              <div class="donut-center">
+                <span class="time-center">{{ formatTime(sevenDaysTotal) }}</span>
               </div>
             </div>
             <div class="chart-legend-vertical">
-              <div v-for="editor in editors" :key="editor.name" class="legend-row has-tooltip">
+              <div v-for="editor in editors" :key="editor.name" class="legend-row">
                 <span class="dot" :style="{ background: editorColor }"></span>
                 <span class="legend-name">{{ editor.name }}</span>
-                <span class="legend-val">{{ editor.percent }}%</span>
-                <div class="tooltip-box">Total: {{ editor.text }}</div>
+                <span class="legend-val">{{ formatTime(editor.text) }}</span>
               </div>
             </div>
           </div>
         </div>
 
         <div class="stat-card">
-          <h3 class="card-label">Tech Distribution</h3>
+          <h3 class="card-label">Tech Distribution (7D)</h3>
           <div class="visual-content">
-            <div class="donut-container chart-hover">
+            <div class="donut-container">
               <svg viewBox="0 0 36 36" class="donut">
                 <path class="donut-ring" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
                 <path v-for="(lang, i) in topLanguages" :key="i"
@@ -116,36 +89,33 @@ const getIcon = (lang) => {
                       :stroke-dashoffset="100 - topLanguages.slice(0, i).reduce((a, b) => a + b.percent, 0)"
                       d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"></path>
               </svg>
-              <div class="donut-center default-text">
-                <span class="editor-name-center">7 Days</span>
-              </div>
-              <div class="custom-tooltip">
-                <span>Weekly Trend</span>
+              <div class="donut-center">
+                <span class="time-center">{{ formatTime(sevenDaysTotal) }}</span>
               </div>
             </div>
             <div class="chart-legend-vertical">
-              <div v-for="(lang, i) in topLanguages" :key="lang.name" class="legend-row has-tooltip">
+              <div v-for="(lang, i) in topLanguages" :key="lang.name" class="legend-row">
                 <span class="dot" :style="{ background: langColors[i] }"></span>
                 <UIcon :name="getIcon(lang.name)" class="w-3 h-3" />
                 <span class="legend-name">{{ lang.name }}</span>
-                <span class="legend-val">{{ lang.percent }}%</span>
-                <div class="tooltip-box">{{ lang.text }} this week</div>
+                <span class="legend-val">{{ formatTime(lang.text) }}</span>
               </div>
             </div>
           </div>
         </div>
 
       </div>
-
-      <div v-else class="loading-placeholder">
-        <UIcon name="i-heroicons-arrow-path" class="spinner" />
-        <p>Syncing with WakaTime cloud...</p>
-      </div>
     </div>
+    <div v-else class="loading-placeholder">Lade Statistiken...</div>
   </section>
 </template>
 
 <style scoped>
+/* Nutze dein bestehendes CSS, hier nur die Ergänzungen: */
+.time-center { font-size: 0.8rem; font-weight: 900; color: #5587ff; }
+.legend-val { color: white; font-weight: 700; font-size: 0.75rem; min-width: 50px; text-align: right; }
+.legend-name { flex-grow: 1; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+/* ... Rest deines Styles ... */
 .coding-activity-wrapper { width: 100%; padding: 60px 0 80px; display: flex; justify-content: center; }
 .container-custom { max-width: 1400px; width: 100%; padding: 0 40px; }
 

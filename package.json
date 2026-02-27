@@ -45,7 +45,8 @@
     "reka-ui": "^2.8.0",
     "three": "^0.182.0",
     "vue": "^3.5.28",
-    "vue-router": "^4.6.4"
+    "vue-router": "^4.6.4",
+    "vue-turnstile": "^1.0.11"
   },
   "devDependencies": {
     "@iconify-json/logos": "^1.2.10",

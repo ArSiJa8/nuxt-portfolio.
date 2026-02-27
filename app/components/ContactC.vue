@@ -66,7 +66,14 @@
             ></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary w-full" :disabled="isSubmitting">
+          <div class="turnstile-wrapper">
+            <VueTurnstile
+                :site-key="turnstileSiteKey"
+                v-model="turnstileToken"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary w-full" :disabled="isSubmitting || !turnstileToken">
             {{ isSubmitting ? 'Sending...' : 'Send Message' }}
           </button>
         </form>
@@ -78,12 +85,14 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
+import VueTurnstile from 'vue-turnstile';
 
 const contactSection = ref(null);
 const isSubmitting = ref(false);
+const turnstileToken = ref('');
 
-// DEINE FORMSPREE ID HIER EINTRAGEN
-const FORMSPREE_ID = "DEINE_ID_HIER";
+// Lädt den Key aus der .env Datei
+const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY;
 
 const socialLinks = [
   { name: 'GitHub', url: 'https://github.com/ArSiJa8', icon: 'uil:github', class: 'github' },
@@ -102,9 +111,17 @@ const handleMouseMove = (e) => {
 };
 
 const handleSubmit = async (e) => {
+  if (!turnstileToken.value) {
+    alert('Please verify you are human.');
+    return;
+  }
+
   isSubmitting.value = true;
   const form = e.target;
   const formData = new FormData(form);
+
+  // Turnstile Token für die Verifizierung mitsenden
+  formData.append('cf-turnstile-response', turnstileToken.value);
 
   try {
     const response = await fetch(`https://formspree.io/f/xkovpvbn`, {
@@ -118,6 +135,7 @@ const handleSubmit = async (e) => {
     if (response.ok) {
       alert('Success! Your message has been sent.');
       form.reset();
+      turnstileToken.value = ''; // Reset Token nach Versand
     } else {
       const data = await response.json();
       alert(data.errors ? data.errors[0].message : 'Oops! There was a problem.');
@@ -140,7 +158,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* Deine bestehenden Styles bleiben identisch */
 .section-container { padding: 40px 20px; }
 .contact-header { text-align: center; margin-bottom: 50px; }
 .contact-p { max-width: 600px; margin: 20px auto 0; opacity: 0.8; color: #fff !important; }
@@ -158,6 +175,13 @@ onMounted(() => {
 .discord:hover { color: #5865F2 !important; filter: drop-shadow(0 0 12px rgba(88, 101, 242, 0.5)); transform: translateY(-5px); }
 .email:hover   { color: #facc15 !important; filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.5)); transform: translateY(-5px); }
 .contact-form { display: flex; flex-direction: column; gap: 20px; }
+
+.turnstile-wrapper {
+  margin: 10px 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
 .w-full { width: 100%; }
 .btn:disabled { opacity: 0.6; cursor: not-allowed; }
 ::placeholder { color: rgba(255, 255, 255, 0.3); }
@@ -167,5 +191,6 @@ onMounted(() => {
   .contact-info, .contact-header { text-align: center; align-items: center; }
   .info-label { text-align: center; }
   .footer-socials { justify-content: center; }
+  .turnstile-wrapper { justify-content: center; }
 }
 </style>

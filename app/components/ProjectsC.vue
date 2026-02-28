@@ -4,7 +4,7 @@
       <div class="projects-header">
         <span class="badge">My Fovourites</span>
         <h1>Featured Projects</h1>
-        <p>A collection of my recent works, blending aesthetics with functional code.</p>
+        <p>Some of my Projects.</p>
       </div>
 
       <div class="projects-grid">

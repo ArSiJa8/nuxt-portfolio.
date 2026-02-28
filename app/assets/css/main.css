@@ -495,51 +495,33 @@ footer {
 
 .main-header {
     position: fixed;
-    top: 20px;
+    top: 20px; /* Abstand zum oberen Rand */
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 40px);
     max-width: 1200px;
     z-index: 1000;
 
-    /* WICHTIG: Kein starker Hintergrund, da der Shader die Arbeit macht */
-    background: rgba(255, 255, 255, 0.01);
+    /* LIQUID GLASS EFFEKT */
+    background: rgba(255, 255, 255, 0.03); /* Extrem transparent */
+    backdrop-filter: blur(20px) saturate(180%); /* Starker Blur + Farbverstärkung */
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
 
-    /* Ein feiner weißer Rahmen für die Glaskante */
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Kanten & Tiefe */
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 24px;
-
-    /* Subtiler Glow nach außen */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-
-    /* Der klassische Blur ergänzt den Shader perfekt */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-/* Der "Glanz"-Streifen oben auf dem Glas */
-.main-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.2),
-            transparent
-    );
-    z-index: 1;
-}
-
-.main-header:hover {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(255, 255, 255, 0.25);
-    transform: translateX(-50%) translateY(-2px); /* Minimaler Lift */
     box-shadow:
-            0 12px 40px rgba(0, 0, 0, 0.3),
-            0 1px 1px 0 rgba(255, 255, 255, 0.1) inset;
+            0 8px 32px rgba(0, 0, 0, 0.3), /* Schatten nach außen */
+            inset 0 0 0 1px rgba(255, 255, 255, 0.05); /* Feiner Glanz innen */
+
+    transition: var(--transition-smooth);
+}
+
+/* Hover-Effekt für das Glas */
+.main-header:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateX(-50%) translateY(-2px); /* Schwebt leicht hoch */
 }
 
 

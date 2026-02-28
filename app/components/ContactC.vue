@@ -39,7 +39,7 @@
             <input
                 name="name"
                 type="text"
-                placeholder="Full Name"
+                placeholder="Name"
                 required
                 @invalid="e => e.target.setCustomValidity('Please enter your full name.')"
                 @input="e => e.target.setCustomValidity('')"

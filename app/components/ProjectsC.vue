@@ -17,7 +17,7 @@
             <div class="tags">
               <span class="tag" v-for="tag in project.tags" :key="tag">{{ tag }}</span>
             </div>
-            <h3>{{ project.title }}</h3>
+            <h2>{{ project.title }}</h2>
             <p>{{ project.description }}</p>
 
             <div class="project-actions">
@@ -94,10 +94,11 @@ onMounted(() => {
   text-align: left;
 }
 
-.project-info h3 {
+.project-info h2 {
   text-align: left;
   margin: 15px 0 10px 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .project-info p {

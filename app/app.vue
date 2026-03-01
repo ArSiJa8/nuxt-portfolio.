@@ -1,6 +1,22 @@
 <script setup>
 import { useRoute } from 'vue-router'
 const route = useRoute()
+
+// 1. SEO & Open Graph (OG) Meta-Tags
+useHead({
+  htmlAttrs: {
+    prefix: 'og: https://ogp.me/ns#'
+  }
+})
+
+useSeoMeta({
+  ogTitle: 'ArSiJa | Portfolio',
+  ogType: 'website',
+  ogUrl: 'https://arsija.net/',
+  ogImage: 'https://arsija.net/wallpaper.jpg',
+  twitterCard: 'summary_large_image',
+})
+
 // Nur ausführen, wenn wir im Browser sind
 if (process.client) {
   const cursor = document.createElement('div');
@@ -31,19 +47,20 @@ if (process.client) {
 
 <template>
   <div id="scroll-anchor-top" style="position: absolute; top: 0; left: 0; height: 1px; width: 1px; z-index: 9999; pointer-events: none;"></div>
-  <div>
+  <div class="app-root">
     <Header />
 
     <Transition name="fade-hero">
-      <div v-if="route.path === '/'" class="hero-background">
+      <section v-if="route.path === '/'" class="hero-background" aria-label="Hero Section">
         <Hero />
-      </div>
+      </section>
     </Transition>
 
     <main :class="['page-content', { 'is-home': route.path === '/' }]">
       <NuxtPage />
-      <Footer />
     </main>
+
+    <Footer />
   </div>
 </template>
 
@@ -76,6 +93,7 @@ if (process.client) {
   width: 100%;
   height: 100vh;
   z-index: -1;
+  display: block; /* Ensure section behaves like a div for styling */
 }
 
 /* --- NEU: Transition Animationen --- */

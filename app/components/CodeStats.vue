@@ -11,7 +11,10 @@ const topLanguages = computed(() => stats.value?.sevenDays?.languages?.slice(0, 
 const editors = computed(() => stats.value?.sevenDays?.editors || [])
 const sevenDaysTotal = computed(() => stats.value?.sevenDays?.total_text || '0 hrs')
 const totalTimeAll = computed(() => stats.value?.allTime?.human_readable_total || '0 hrs')
-const totalLines = computed(() => stats.value?.allTime?.total_lines_display?.toLocaleString() || '12,482')
+const totalLines = computed(() => {
+  if (!stats.value?.allTime?.total_lines_display) return '12,482'
+  return new Intl.NumberFormat('en-US').format(stats.value.allTime.total_lines_display).replace(/,/g, '.')
+})
 
 const langColors = ['#3178c6', '#41b883', '#3d59a1', '#f7df1e', '#e34f26']
 const editorColor = '#00cdfe'
@@ -32,11 +35,13 @@ const getIcon = (lang) => {
   <section class="coding-activity-wrapper">
     <div class="container-custom" v-if="!pending && stats">
 
-      <div class="header-unit">
-        <div class="live-badge" :class="{ 'is-coding': stats.isActive }">
-          <div class="pulse-wrapper"><span class="pulse-dot-fixed"></span><span class="pulse-ring"></span></div>
-          <span class="live-text">{{ stats.isActive ? 'Coding Now' : 'Currently Away' }}</span>
-        </div>
+      <div class="header-unit" v-if="stats">
+        <ClientOnly>
+          <div class="live-badge" :class="{ 'is-coding': stats.isActive }">
+            <div class="pulse-wrapper"><span class="pulse-dot-fixed"></span><span class="pulse-ring"></span></div>
+            <span class="live-text">{{ stats.isActive ? 'Coding Now' : 'Currently Away' }}</span>
+          </div>
+        </ClientOnly>
         <h2 class="main-title">Development Activity</h2>
       </div>
 
@@ -85,8 +90,8 @@ const getIcon = (lang) => {
                 <path class="donut-ring" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
                 <path v-for="(lang, i) in topLanguages" :key="i"
                       class="donut-segment" :stroke="langColors[i]" stroke-width="3"
-                      :stroke-dasharray="`${lang.percent} ${100 - lang.percent}`"
-                      :stroke-dashoffset="100 - topLanguages.slice(0, i).reduce((a, b) => a + b.percent, 0)"
+                      :stroke-dasharray="`${(lang.percent || 0).toFixed(1)} ${ (100 - (lang.percent || 0)).toFixed(1)}`"
+                      :stroke-dashoffset="(100 - topLanguages.slice(0, i).reduce((a, b) => a + (b.percent || 0), 0)).toFixed(1)"
                       d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"></path>
               </svg>
               <div class="donut-center">

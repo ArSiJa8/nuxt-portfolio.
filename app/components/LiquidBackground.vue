@@ -76,7 +76,7 @@ onMounted(() => {
 
   const img = new Image();
   img.crossOrigin = "anonymous";
-  img.src = "~/assets/imgs/wallpaper.jpg"; // Pfad zu deinem Wallpaper
+  img.src = "/wallpaper.jpg"; // Nutze das optimierte Wallpaper aus dem public Folder
 
   img.onload = () => {
     const tex = gl.createTexture();

@@ -19,7 +19,7 @@
       </nav>
 
       <div v-if="lastUpdateDate" class="update-info">
-        Last update: {{ lastUpdateDate }}
+        Last update: <ClientOnly>{{ lastUpdateDate }}</ClientOnly>
       </div>
 
     </div>

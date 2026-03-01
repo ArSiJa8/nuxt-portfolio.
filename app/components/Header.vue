@@ -24,7 +24,6 @@
               rel="noopener noreferrer"
               :class="['header-social-link', link.class]"
               :aria-label="link.name"
-              aria-label="link.name"
           >
             <Icon :name="link.icon" aria-hidden="true" />
           </a>
@@ -38,7 +37,6 @@
           rel="noopener noreferrer"
           :class="['header-social-link', link.class]"
           :aria-label="link.name"
-          aria-label="link.name"
       >
         <Icon :name="link.icon" aria-hidden="true" />
       </a>

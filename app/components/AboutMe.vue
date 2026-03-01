@@ -57,9 +57,11 @@
                   :style="{ '--hover-color': tool.color }"
               >
                 <img :src="tool.src" :alt="tool.name" class="tool-icon" />
-                <span class="tool-tooltip">
-                  {{ tool.name }} • {{ calculateExperience(tool.since) }}
-                </span>
+                <ClientOnly>
+                  <span class="tool-tooltip">
+                    {{ tool.name }} • {{ calculateExperience(tool.since) }}
+                  </span>
+                </ClientOnly>
               </div>
             </div>
           </div>

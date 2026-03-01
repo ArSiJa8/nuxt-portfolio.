@@ -17,6 +17,9 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'en' },
       titleTemplate: '%s | ArSiJa',
       title: 'Portfolio',
+      link: [
+        { rel: 'preload', as: 'image', href: '/wallpaper.jpg', fetchpriority: 'high' }
+      ],
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }

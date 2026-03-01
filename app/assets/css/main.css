@@ -413,10 +413,8 @@ footer {
     position: relative;
     width: 100%;
     height: 100vh;
-    background-image: url('../imgs/wallpaper.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    /* Hintergrundbild entfernt für LCP Optimierung (jetzt in Hero.vue als <img>) */
+    background: #1a1a1d;
     display: flex;
     justify-content: center;
     align-items: center;

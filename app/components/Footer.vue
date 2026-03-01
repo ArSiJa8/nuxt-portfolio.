@@ -102,7 +102,7 @@ onMounted(() => {
 .update-info {
   font-size: 0.6rem;
   letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(255, 255, 255, 0.66);
   text-transform: uppercase;
 }
 </style>

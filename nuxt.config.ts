@@ -18,6 +18,7 @@ export default defineNuxtConfig({
       titleTemplate: '%s | ArSiJa',
       title: 'Portfolio',
       link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'preload', as: 'image', href: '/wallpaper.jpg', fetchpriority: 'high' }
       ],
       meta: [

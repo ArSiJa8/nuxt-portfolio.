@@ -1,22 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router'
 const route = useRoute()
-
-// 1. SEO & Open Graph (OG) Meta-Tags
-useHead({
-  htmlAttrs: {
-    prefix: 'og: https://ogp.me/ns#'
-  }
-})
-
-useSeoMeta({
-  ogTitle: 'ArSiJa | Portfolio',
-  ogType: 'website',
-  ogUrl: 'https://arsija.net/',
-  ogImage: 'https://arsija.net/wallpaper.jpg',
-  twitterCard: 'summary_large_image',
-})
-
 // Nur ausführen, wenn wir im Browser sind
 if (process.client) {
   const cursor = document.createElement('div');
@@ -47,20 +31,19 @@ if (process.client) {
 
 <template>
   <div id="scroll-anchor-top" style="position: absolute; top: 0; left: 0; height: 1px; width: 1px; z-index: 9999; pointer-events: none;"></div>
-  <div class="app-root">
+  <div>
     <Header />
 
     <Transition name="fade-hero">
-      <section v-if="route.path === '/'" class="hero-background" aria-label="Hero Section">
+      <div v-if="route.path === '/'" class="hero-background">
         <Hero />
-      </section>
+      </div>
     </Transition>
 
     <main :class="['page-content', { 'is-home': route.path === '/' }]">
       <NuxtPage />
+      <Footer />
     </main>
-
-    <Footer />
   </div>
 </template>
 
@@ -73,11 +56,14 @@ if (process.client) {
   width: 100%;
   /* Fix für flüssige Übergänge: Mindesthöhe verhindert Springen */
   min-height: 100vh;
+  /* Header-Abstand für alle Seiten außer Home */
+  padding-top: 120px;
 }
 
 /* Spezielle Regeln NUR für die Startseite */
 .is-home {
   margin-top: 100vh;
+  padding-top: 0; /* Home braucht keinen Header-Abstand, da Header über Hero schwebt */
   box-shadow: 0 -50px 150px 30px rgba(0, 0, 0, 0);
   background: linear-gradient(
       to bottom,
@@ -93,7 +79,6 @@ if (process.client) {
   width: 100%;
   height: 100vh;
   z-index: -1;
-  display: block; /* Ensure section behaves like a div for styling */
 }
 
 /* --- NEU: Transition Animationen --- */

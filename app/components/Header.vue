@@ -1,6 +1,6 @@
 <template>
   <header class="main-header">
-    <nav class="nav-container" aria-label="Hauptnavigation">
+    <nav class="nav-container" aria-label="main-header">
       <NuxtLink to="/" class="nav-branding">ArSiJa</NuxtLink>
 
       <ul class="nav-menu" :class="{ 'active': isMenuActive }">
@@ -14,45 +14,24 @@
             {{ item.name }}
           </NuxtLink>
         </li>
-
-        <li class="mobile-socials">
-          <a
-              v-for="link in socialLinks"
-              :key="link.name"
-              :href="link.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              :class="['header-social-link', link.class]"
-              :aria-label="link.name"
-          >
-            <Icon :name="link.icon" aria-hidden="true" />
+        <li class="mobile-socials" aria-label="Social Links">
+          <a v-for="link in socialLinks" :key="link.name" :href="link.url" target="_blank" :class="['header-social-link', link.class]" aria-label="social link">
+            <Icon :name="link.icon" />
           </a>
         </li>
-      </ul> <div class="header-socials-desktop">
-      <a
-          v-for="link in socialLinks"
-          :key="link.name"
-          :href="link.url"
-          target="_blank"
-          rel="noopener noreferrer"
-          :class="['header-social-link', link.class]"
-          :aria-label="link.name"
-      >
-        <Icon :name="link.icon" aria-hidden="true" />
-      </a>
-    </div>
+      </ul>
 
-      <button
-          class="hamburger"
-          :class="{ 'active': isMenuActive }"
-          @click="toggleMenu"
-          aria-label="Menü öffnen"
-          :aria-expanded="isMenuActive"
-      >
+      <div class="header-socials-desktop">
+        <a v-for="link in socialLinks" :key="link.name" :href="link.url" target="_blank" :class="['header-social-link', link.class]">
+          <Icon :name="link.icon" />
+        </a>
+      </div>
+
+      <div class="hamburger" :class="{ 'active': isMenuActive }" @click="toggleMenu">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
-      </button>
+      </div>
     </nav>
   </header>
 </template>

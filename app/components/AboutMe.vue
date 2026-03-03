@@ -17,7 +17,7 @@
 
           <p class="about-p">
             Based in Switzerland, I’ve been navigating the evolving world of code
-            for over <strong>9 years</strong>. What started as a fascination with
+            for over <strong>6 years</strong>. What started as a fascination with
             Minecraft Mods has grown into a specialized focus on <strong>Vue</strong> and <strong>Nuxt</strong>,
             where I bridge the gap between complex architecture and smooth design.
           </p>
@@ -95,20 +95,20 @@ const handleMouseMove = (e) => {
 
 const toolGroups = {
   "Programming": [
-    { name: "JavaScript", since: 2021, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg", color: "#f7df1e" },
-    { name: "TypeScript", since: 2021, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg", color: "#3178c6" },
-    { name: "Python", since: 2017, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", color: "#3776ab" },
-    { name: "Java", since: 2017, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg", color: "#ec2024" }
+    { name: "JavaScript", since: 2022, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg", color: "#f7df1e" },
+    { name: "TypeScript", since: 2022, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg", color: "#3178c6" },
+    { name: "Python", since: 2020, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", color: "#3776ab" },
+    { name: "Java", since: 2020, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg", color: "#ec2024" }
   ],
   "Web Stack": [
     { name: "Vue.js", since: 2023, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg", color: "#42b883" },
     { name: "Nuxt", since: 2023, src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxt/nuxt-original.svg", color: "#2fcc5b" },
     { name: "Node.js", since: 2022, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg", color: "#68a063" },
-    { name: "HTML5", since: 2020, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg", color: "#e34f26" },
-    { name: "CSS3", since: 2020, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg", color: "#1572b6" }
+    { name: "HTML5", since: 2021, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg", color: "#e34f26" },
+    { name: "CSS3", since: 2021, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg", color: "#1572b6" }
   ],
   "Design & Dev": [
-    { name: "Git", since: 2017, src: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg", color: "#f05032" },
+    { name: "Git", since: 2019, src: "https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg", color: "#f05032" },
     { name: "Figma", since: 2024, src: "https://www.vectorlogo.zone/logos/figma/figma-icon.svg", color: "#f24e1e" },
     { name: "Docker", since: 2023, src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg", color: "#2496ed" },
     { name: "Vite", since: 2022, src: "https://www.vectorlogo.zone/logos/vitejsdev/vitejsdev-icon.svg", color: "#646cff" }

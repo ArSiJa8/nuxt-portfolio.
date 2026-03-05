@@ -49,7 +49,7 @@ const getIcon = (lang) => {
           <h3 class="card-label">Overall Analytics</h3>
           <div class="stat-block">
             <span class="stat-value-large">{{ formatTime(totalTimeAll) }}</span>
-            <span class="stat-sublabel">Total Lifetime</span>
+            <span class="stat-sublabel">Total Codingtime</span>
           </div>
           <div class="divider-glass"></div>
           <div class="stat-block">

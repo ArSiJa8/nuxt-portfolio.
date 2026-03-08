@@ -33,7 +33,8 @@ const getIcon = (lang) => {
 
 <template>
   <section class="coding-activity-wrapper">
-    <div class="container-custom" v-if="!pending && stats">
+    <ClientOnly>
+      <div class="container-custom" v-if="!pending && stats">
 
       <div class="header-unit" v-if="stats">
         <div class="live-badge" :class="{ 'is-coding': stats?.isActive }">
@@ -109,7 +110,63 @@ const getIcon = (lang) => {
 
       </div>
     </div>
-    <div v-else class="loading-placeholder">Lade Statistiken...</div>
+    <template #fallback>
+      <div class="loading-placeholder">
+        <div class="header-unit">
+          Lade Statistiken...
+          <div class="is-coding live-badge">
+            <div class="pulse-wrapper">
+              <span class="pulse-dot-fixed"></span>
+              <span class="pulse-ring"></span>
+            </div>
+            <span class="live-text">Coding Now</span>
+          </div>
+          <h2 class="main-title">Development Activity</h2>
+        </div>
+        <div class="stats-flex-container">
+          <div class="stat-card">
+            <h3 class="card-label">Overall Analytics</h3>
+            <div class="stat-block">
+              <span class="stat-value-large">4h 22m</span>
+              <span class="stat-sublabel">Total Lifetime</span>
+            </div>
+            <div class="divider-glass"></div>
+            <div class="stat-block">
+              <span class="stat-value-mid">12.482</span>
+              <span class="stat-sublabel">Lines of Code</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <h3 class="card-label">Editor Usage (7D)</h3>
+            <div class="visual-content">
+              <div class="donut-container">
+                <svg viewBox="0 0 36 36" class="donut">
+                  <path class="donut-ring" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+                  <path class="donut-segment" stroke="#00cdfe" stroke-width="3" stroke-dasharray="100, 0" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none"></path>
+                </svg>
+                <div class="donut-center">
+                  <span class="time-center">4h 22m</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <h3 class="card-label">Tech Distribution (7D)</h3>
+            <div class="visual-content">
+              <div class="donut-container">
+                <svg viewBox="0 0 36 36" class="donut">
+                  <path class="donut-ring" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="3"></path>
+                </svg>
+                <div class="donut-center">
+                  <span class="time-center">4h 22m</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+    </ClientOnly>
   </section>
 </template>
 

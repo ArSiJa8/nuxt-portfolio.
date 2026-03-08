@@ -829,3 +829,17 @@ input:focus, textarea:focus {
     transform: translateX(50px);
 }
 
+@theme {
+    /* Überschreiben der primären Nuxt UI Farbe */
+    --color-primary-50: #f8faff;
+    --color-primary-100: #f0f7ff;
+    --color-primary-200: #e0efff;
+    --color-primary-300: #bae0ff;
+    --color-primary-400: #7cc2ff;
+    --color-primary-500: #93c5fd;
+    --color-primary-600: #60a5fa;
+    --color-primary-700: #3b82f6;
+    --color-primary-800: #2563eb;
+    --color-primary-900: #1d4ed8;
+    --color-primary-950: #172554;
+}

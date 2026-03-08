@@ -3,7 +3,7 @@
     <div class="footer-container">
 
       <div class="footer-copyright">
-        &copy; {{ currentYear }} <span class="white-text">ArSiJa</span>
+        &copy; <ClientOnly>{{ currentYear }}</ClientOnly> <span class="white-text">ArSiJa</span>
       </div>
 
       <nav class="footer-socials" aria-label="Social Media">
@@ -30,7 +30,7 @@
 import { computed, onMounted, ref } from 'vue';
 
 const lastUpdateDate = ref('');
-const currentYear = computed(() => new Date().getFullYear());
+const currentYear = new Date().getFullYear();
 
 const socialLinks = [
   { name: 'GitHub', url: 'https://github.com/ArSiJa8', icon: 'uil:github', class: 'github' },

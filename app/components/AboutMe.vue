@@ -58,9 +58,9 @@
               >
                 <img :src="tool.src" :alt="tool.name" class="tool-icon" />
                 <ClientOnly>
-                  <span class="tool-tooltip">
-                    {{ tool.name }} • {{ calculateExperience(tool.since) }}
-                  </span>
+                <span class="tool-tooltip">
+                  {{ tool.name }} • {{ calculateExperience(tool.since) }}
+                </span>
                 </ClientOnly>
               </div>
             </div>
@@ -77,9 +77,11 @@ import { onMounted, ref } from 'vue'
 
 const aboutSection = ref(null)
 
+const currentYear = 2026; // Fixiert für Hydration Stabilität
+const currentYearValue = 2026; // Fixiert für Hydration Stabilität
+
 const calculateExperience = (sinceYear) => {
-  const currentYear = new Date().getFullYear();
-  const diff = currentYear - sinceYear;
+  const diff = currentYearValue - sinceYear;
   if (diff <= 0) return "Learning";
   return `${diff} ${diff === 1 ? 'Year' : 'Years'}`;
 };

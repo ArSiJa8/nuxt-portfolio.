@@ -1,6 +1,7 @@
 <template>
   <section id="blog" class="py-20 relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/10 blur-[120px] rounded-full -z-10"></div>
+    <ClientOnly>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/10 blur-[120px] rounded-full -z-10"></div>
 
     <div class="container-white">
       <div class="mb-16">
@@ -60,6 +61,7 @@
       </div>
       
     </div>
+    </ClientOnly>
   </section>
 </template>
 

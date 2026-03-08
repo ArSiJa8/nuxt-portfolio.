@@ -99,6 +99,7 @@ export default defineNuxtConfig({
     production: false,
   },
 
+
   // 4. Runtime Config
   runtimeConfig: {
     public: {

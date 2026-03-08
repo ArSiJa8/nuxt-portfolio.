@@ -35,6 +35,7 @@
     "better-sqlite3": "^12.6.2",
     "buttercms": "^3.0.3",
     "echarts": "^6.0.0",
+    "gsap": "^3.14.2",
     "nuxt": "^4.3.1",
     "nuxt-charts": "^2.1.2",
     "nuxt-echarts": "^1.0.1",

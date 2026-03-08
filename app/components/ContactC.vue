@@ -67,10 +67,12 @@
           </div>
 
           <div class="turnstile-wrapper">
-            <VueTurnstile
-                :site-key="turnstileSiteKey"
-                v-model="turnstileToken"
-            />
+            <ClientOnly>
+              <VueTurnstile
+                  :site-key="turnstileSiteKey"
+                  v-model="turnstileToken"
+              />
+            </ClientOnly>
           </div>
 
           <button type="submit" class="btn btn-primary w-full" :disabled="isSubmitting || !turnstileToken">

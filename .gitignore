@@ -26,3 +26,6 @@ logs
 # Playwright
 playwright-report/
 test-results/
+
+#Railway
+package-lock.json

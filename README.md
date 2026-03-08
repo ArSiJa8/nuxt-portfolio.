@@ -98,4 +98,4 @@ npm run generate
 TODO: Specify the license (e.g., MIT, Apache 2.0).
 
 ---
-*Created with ❤️ by ArSiJa*
+*Created by ArSiJa*

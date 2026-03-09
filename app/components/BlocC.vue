@@ -3,7 +3,7 @@
     <ClientOnly>
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/10 blur-[120px] rounded-full -z-10"></div>
 
-    <div class="container-white">
+    <div class="container-white" style="margin-bottom: 12px">
       <div class="mb-16">
         <h5>Latest Insights</h5>
         <h2 class="text-4xl md:text-5xl mb-4">ArSi's Blog</h2>

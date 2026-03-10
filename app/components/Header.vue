@@ -45,7 +45,7 @@ const menuItems = [
   { name: 'About', path: '/About' },
   { name: 'Contact', path: '/Contact' },
   { name: 'Projects', path: '/Projects' },
-  { name: 'Blog', path: '/Blog' },
+  { name: 'Blog', path: 'https://arsija.blogspot.com/' },
 ];
 
 const socialLinks = [

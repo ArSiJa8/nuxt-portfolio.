@@ -1,11 +1,10 @@
 <script setup lang="ts">
-// In Nuxt 4 nutzen wir das neue Verzeichnis-Schema (app/)
-// useFetch profitiert nun von den vorverarbeiteten Daten des Servers
-const { data: posts, pending, error, refresh } = await useFetch('/api/blog')
+// In Nuxt 4 liegt der Fokus auf Typensicherheit und dem app/ Verzeichnis
+const { data: posts, status, error, refresh } = await useFetch('/api/blog')
 
 const formatDate = (dateStr: string) => {
   if (!dateStr) return ''
-  return new Date(dateStr).toLocaleDateString('en-US', {
+  return new Date(dateStr).toLocaleDateString('de-DE', {
     day: 'numeric',
     month: 'short',
     year: 'numeric'
@@ -13,7 +12,7 @@ const formatDate = (dateStr: string) => {
 }
 
 const stripHtml = (html: string) => {
-  if (!html) return "No content available."
+  if (!html) return "Kein Inhalt verfügbar."
   const clean = html
       .replace(/<[^>]*>?/gm, '')
       .replace(/&nbsp;/g, ' ')
@@ -24,29 +23,51 @@ const stripHtml = (html: string) => {
 </script>
 
 <template>
-  <section id="blog" class="py-20 relative overflow-hidden">
-    <div class="container-white">
-      <div v-if="pending" class="flex flex-col items-center justify-center p-20">
-        <UIcon name="i-heroicons-arrow-path" class="animate-spin" />
-        <p>Syncing Feed...</p>
-      </div>
-
-      <div v-else-if="error" class="text-center">
-        <UIcon name="i-heroicons-exclamation-triangle" class="text-red-400" />
-        <p>Failed to load the blog feed.</p>
-        <UButton @click="refresh" class="mt-4">Retry</UButton>
-      </div>
-
-      <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <article v-for="post in posts" :key="post.id" class="card">
-          <div class="badge">
-            {{ formatDate(post.published) }}
-          </div>
-          <h3>{{ post.title }}</h3>
-          <p>{{ stripHtml(post.content) }}</p>
-          <a :href="post.link" target="_blank">Read More</a>
-        </article>
-      </div>
+  <UContainer class="py-20">
+    <div v-if="status === 'pending'" class="flex flex-col items-center justify-center p-20">
+      <UIcon name="i-lucide-refresh-cw" class="animate-spin size-8 text-primary" />
+      <p class="mt-4">Synchronisiere Feed...</p>
     </div>
-  </section>
+
+    <div v-else-if="error" class="text-center">
+      <UIcon name="i-lucide-alert-triangle" class="size-12 text-error mx-auto" />
+      <p class="mt-4 text-error">Der Blog-Feed konnte nicht geladen werden.</p>
+      <UButton 
+        color="error" 
+        variant="ghost" 
+        icon="i-lucide-refresh-ccw" 
+        class="mt-4" 
+        @click="refresh"
+      >
+        Erneut versuchen
+      </UButton>
+    </div>
+
+    <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <UCard v-for="post in posts" :key="post.id" class="flex flex-col">
+        <template #header>
+          <UBadge variant="subtle" color="primary">
+            {{ formatDate(post.published) }}
+          </UBadge>
+        </template>
+        
+        <h3 class="text-xl font-bold mb-2">{{ post.title }}</h3>
+        <p class="text-neutral-600 dark:text-neutral-400 flex-grow">
+          {{ stripHtml(post.content) }}
+        </p>
+        
+        <template #footer>
+          <UButton 
+            :to="post.link" 
+            target="_blank" 
+            variant="link" 
+            color="primary" 
+            trailing-icon="i-lucide-external-link"
+          >
+            Weiterlesen
+          </UButton>
+        </template>
+      </UCard>
+    </div>
+  </UContainer>
 </template>

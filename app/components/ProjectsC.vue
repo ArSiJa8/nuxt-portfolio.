@@ -2,7 +2,7 @@
   <section id="projects" class="section-container">
     <div class="container-white">
       <div class="projects-header">
-        <span class="badge">My Fovourites</span>
+        <span class="badge">My Favourites</span>
         <h1>Featured Projects</h1>
         <p>Some of my Projects.</p>
       </div>

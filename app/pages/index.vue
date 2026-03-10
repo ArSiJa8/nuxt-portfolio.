@@ -13,7 +13,6 @@ import Scrolltest from "~/components/Scrolltest.vue";
    <div>
      <AboutMe />
       <ProjectsC />
-      <CodeStats />
      <Scrolltest />
     </div>
 </template>

@@ -114,13 +114,8 @@ const getIcon = (lang) => {
       <div class="loading-placeholder">
         <div class="header-unit">
           Lade Statistiken...
-          <div class="is-coding live-badge">
-            <div class="pulse-wrapper">
-              <span class="pulse-dot-fixed"></span>
-              <span class="pulse-ring"></span>
-            </div>
-            <span class="live-text">Coding Now</span>
-          </div>
+        </div>
+        <div class="header-unit">
           <h2 class="main-title">Development Activity</h2>
         </div>
         <div class="stats-flex-container">

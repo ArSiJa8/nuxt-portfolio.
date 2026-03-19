@@ -179,7 +179,7 @@ const getIcon = (lang) => {
 .main-title { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 950; color: white; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 12px; }
 
 .update-info-box { margin-top: 1.2rem; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.badge-update { background: rgba(85, 135, 255, 0.1); color: #5587ff; font-size: 10px; font-weight: 800; text-transform: uppercase; padding: 4px 14px; border-radius: 50px; border: 1px solid rgba(85, 135, 255, 0.2); letter-spacing: 1px; }
+.badge-update { background: rgba(85, 135, 255, 0.1); color: #4979ec; font-size: 10px; font-weight: 800; text-transform: uppercase; padding: 4px 14px; border-radius: 50px; border: 1px solid rgba(85, 135, 255, 0.2); letter-spacing: 1px; }
 .accuracy-note { font-size: 0.65rem; color: rgba(255, 255, 255, 0.25); font-style: italic; }
 
 /* CARDS GRID */

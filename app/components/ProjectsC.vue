@@ -43,7 +43,7 @@ import { onMounted } from 'vue';
 const projects = [
   {
     title: 'Swisstiers',
-    description: 'A modern design Minecraft Leaderboard for Swiss Minecaft Players.',
+    description: 'A modern design Minecraft Leaderboard for Swiss Minecraft Players.',
     image: 'https://i.ibb.co/WrPSRVf/Swisstiers2.png',
     tags: ['Python', 'Nuxt 4', 'CSS'],
     link: 'https://swisstiers.ch/'

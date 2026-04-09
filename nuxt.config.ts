@@ -47,7 +47,6 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@vueuse/nuxt',
     '@nuxt/eslint',
-    '@nuxt/test-utils',
     '@nuxt/fonts',
     '@nuxt/scripts',
     // Wichtig: /nuxt Suffix für das Modul

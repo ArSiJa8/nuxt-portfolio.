@@ -1,6 +1,6 @@
 <template>
   <header class="main-header">
-    <nav class="nav-container" aria-label="Hauptnavigation">
+    <nav class="nav-container" aria-label="Main Navigation">
       <NuxtLink to="/" class="nav-branding">ArSiJa</NuxtLink>
 
       <ul class="nav-menu" :class="{ 'active': isMenuActive }">

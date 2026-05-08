@@ -8,7 +8,6 @@ dist
 
 # Node dependencies
 node_modules
-pnpm-lock.yaml
 # Logs
 logs
 *.log
@@ -28,4 +27,3 @@ playwright-report/
 test-results/
 
 #Railway
-package-lock.json

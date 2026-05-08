@@ -7,3 +7,13 @@ allowBuilds:
   protobufjs: true
   unrs-resolver: true
   vue-demi: true
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - better-sqlite3
+  - core-js
+  - esbuild
+  - maplibre-gl
+  - protobufjs
+  - unrs-resolver
+  - vue-demi

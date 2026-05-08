@@ -445,7 +445,6 @@ footer {
             inset 0 0 0 1px rgba(255, 255, 255, 0.08); /* Etwas hellerer Glanz innen */
 
     transition: var(--transition-smooth);
-    filter: blur(5);
 }
 
 /* Hover-Effekt für das Glas */
